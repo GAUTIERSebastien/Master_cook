@@ -1,5 +1,4 @@
 gramme -> "UNIT_GRAM",
-kilogramme -> "UNIT_KILOGRAM",
 objet -> "UNIT_OBJECT" (exemple: 12 pommes de terre),
 sachet -> "UNIT_PACK",
 tranche -> "UNIT_SLICE",
@@ -10,3 +9,4 @@ cuillère à café -> "UNIT_TEASPOON",
 cube -> "UNIT_CUBE",
 gousse -> "UNIT_POD",
 pincée -> "UNIT_PINCH"
+quantité selon le goût du cuisinier -> "UNIT_PM"
