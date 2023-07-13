@@ -1,29 +1,31 @@
 {
-  "name": "master_cook",
+  "name": "exnode1",
   "version": "1.0.0",
   "description": "En vous aidant des [Consignes](Consignes.md), réaliser une application web de gestion de recettes de cuisines.",
-  "main": "index.js",
+  "main": "bin/www",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node bin/www",
+
+    "start": "cross-env NODE_ENV=production node  bin/www",
     "dev": "cross-env NODE_ENV=development nodemon bin/www"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+
+    "cross-env": "^7.0.3",
+    "express": "^4.18.2"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GAUTIERSebastien/Master_cook.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/GAUTIERSebastien/Master_cook/issues"
   },
-  "homepage": "https://github.com/GAUTIERSebastien/Master_cook#readme",
-  "dependencies": {
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "gentls": "^2.0.3"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  }
+  "homepage": "https://github.com/GAUTIERSebastien/Master_cook#readme"
 }
