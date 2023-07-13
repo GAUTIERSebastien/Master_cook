@@ -1,6 +1,10 @@
 body {
 
-    background: red;
+    background: rgba(137, 7, 7, 0.722);
     color: white;
 
+}
+#title{
+    text-align: center;
+    color: darkred;
 }
