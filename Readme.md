@@ -34,4 +34,6 @@ git checkout
 
 ### Créer et changer de branche 
 
-
+```bash
+git checkout -b nomDeLaBranche
+```
