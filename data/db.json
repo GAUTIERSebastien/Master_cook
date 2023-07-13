@@ -1,7 +1,6 @@
 {
     "french": [
         {
-
             "id": 100,
             "title": "creme anglaise",
             "ingredients": [
@@ -28,7 +27,6 @@
             ]
         },
         {
-
             "id": 101,
             "title": "creme patisiere",
             "ingredients": [
@@ -139,56 +137,54 @@
                 }
             ]
         }
-    
-    
-    ]
+    ],
 
     "american": [
-    {
-        "id": 300,
-        "title": "wrap",
-        "ingredients": [
-            {
-                "name": "tortilla",
-                "quantity": 4,
-                "unit": "UNIT_OBJECT"
-            },
-            {
-                "name": "salade",
-                "quantity": 1,
-                "unit": "UNIT_GRAM"
-            },
-            {
-                "name": "tomate",
-                "quantity": 9,
-                "unit": "UNIT_SLICE"
-            },
-            {
-                "name": "concombre",
-                "quantity": 12,
-                "unit": "UNIT_SLICE"
-            },
-            {
-                "name": "oignon",
-                "quantity": 4,
-                "unit": "UNIT_SLICE"
-            },
-            {
-                "name": "poulet",
-                "quantity": 300,
-                "unit": "UNIT_GRAM"
-            },
-            {
-                "name": "fromage",
-                "quantity": 4,
-                "unit": "UNIT_SLICE"
-            },
-            {
-                "name": "sauce au choix",
-                "unit": "UNIT_PM"
-            }
-        ]
-    }
+        {
+            "id": 300,
+            "title": "wrap",
+            "ingredients": [
+                {
+                    "name": "tortilla",
+                    "quantity": 4,
+                    "unit": "UNIT_OBJECT"
+                },
+                {
+                    "name": "salade",
+                    "quantity": 1,
+                    "unit": "UNIT_GRAM"
+                },
+                {
+                    "name": "tomate",
+                    "quantity": 9,
+                    "unit": "UNIT_SLICE"
+                },
+                {
+                    "name": "concombre",
+                    "quantity": 12,
+                    "unit": "UNIT_SLICE"
+                },
+                {
+                    "name": "oignon",
+                    "quantity": 4,
+                    "unit": "UNIT_SLICE"
+                },
+                {
+                    "name": "poulet",
+                    "quantity": 300,
+                    "unit": "UNIT_GRAM"
+                },
+                {
+                    "name": "fromage",
+                    "quantity": 4,
+                    "unit": "UNIT_SLICE"
+                },
+                {
+                    "name": "sauce au choix",
+                    "unit": "UNIT_PM"
+                }
+            ]
+        }
     ],
     "japanese": [
         {
@@ -229,10 +225,8 @@
                     "name": "hulle",
                     "quantity": 3000,
                     "unit": "UNIT_GRAM"
-
                 }
             ]
-
         }
     ]
 }
