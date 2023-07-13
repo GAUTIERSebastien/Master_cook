@@ -15,6 +15,23 @@ npm init -y && npm i express && npm i -D nodemon
 ```bash
 npx gentls 
 ```
+
+## Aide GitHub
+
+Attention au branches : Toujours vérifier la branches avant de faire une modification
+
+```bash
+git status
 ```
-TEST 1
+
+Ne jamais travailler sur main/master
+
+### Changer de branche
+
+```bash
+git checkout
 ```
+
+### Créer et changer de branche 
+
+
