@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/GAUTIERSebastien/Master_cook#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "gentls": "^2.0.3"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
