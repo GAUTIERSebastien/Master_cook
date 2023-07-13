@@ -18,15 +18,12 @@ npx gentls
 
 ## Aide GitHub
 
-Attention au branches : Toujours vérifier la branches avant de faire une modification
+Attention au branches : Toujours vérifier la branche avant de faire une modification
 
 ```bash
 git status
 ```
-<<<<<<< HEAD
-Test 2
-```
-=======
+
 
 Ne jamais travailler sur main/master
 
@@ -38,5 +35,20 @@ git checkout
 
 ### Créer et changer de branche 
 
+```bash
+git checkout -b nomDeLaBranche
+```
 
->>>>>>> fde010fee0f5115302a0e4efcccb6da4b0c0da85
+### Push sur GitHub
+
+```bash
+git add .
+```
+
+```bash
+git commit -m "Commentaire de ton commit en anglais plizzz =)"
+```
+
+```bash
+git push
+```

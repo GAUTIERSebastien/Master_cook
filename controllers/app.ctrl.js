@@ -1,6 +1,7 @@
 const { resolve } = require('path');
 
 exports.homeCtrl = (req, res) => {
+
     res.sendFile(resolve('public', 'home.html'));
 };
 
@@ -12,4 +13,5 @@ exports.servicesCtrl = (req, res) => {
 };
 
 exports.contactCtrl = (req, res) => res.end('Contact');
+
 

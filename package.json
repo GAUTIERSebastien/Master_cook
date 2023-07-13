@@ -4,8 +4,10 @@
   "description": "En vous aidant des [Consignes](Consignes.md), réaliser une application web de gestion de recettes de cuisines.",
   "main": "bin/www",
   "scripts": {
+
     "start": "cross-env NODE_ENV=production node  bin/www",
     "dev": "cross-env NODE_ENV=development nodemon bin/www"
+
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
     "nodemon": "^3.0.1"
   },
   "dependencies": {
+
     "cross-env": "^7.0.3",
     "express": "^4.18.2"
   },

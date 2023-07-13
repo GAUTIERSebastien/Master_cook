@@ -8,6 +8,7 @@ const app = require('../app');
 
 // Création du serveur HTTP
 http
+
     .createServer((req, res) => {
         // Déclaration de l'url de redirection
         // à partir de la requête
@@ -24,3 +25,4 @@ http
 https
     .createServer({ cert, key }, app)
     .listen(ports.https);
+
