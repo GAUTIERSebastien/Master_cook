@@ -1,0 +1,26 @@
+{
+  "name": "master_cook",
+  "version": "1.0.0",
+  "description": "En vous aidant des [Consignes](Consignes.md), réaliser une application web de gestion de recettes de cuisines.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GAUTIERSebastien/Master_cook.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GAUTIERSebastien/Master_cook/issues"
+  },
+  "homepage": "https://github.com/GAUTIERSebastien/Master_cook#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
