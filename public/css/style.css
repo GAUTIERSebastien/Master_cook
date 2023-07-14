@@ -4,3 +4,12 @@ body {
     color: white;
 
 }
+.recipeName{
+    border: 2px solid teal;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 250px;
+
+}

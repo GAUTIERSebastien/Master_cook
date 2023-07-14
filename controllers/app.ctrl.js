@@ -1,4 +1,5 @@
 const { resolve } = require('path');
+const {allRecipes} = require('../data/db.json')
 
 exports.homeCtrl = (req, res) => {
 
@@ -6,12 +7,13 @@ exports.homeCtrl = (req, res) => {
 };
 
 exports.servicesCtrl = (req, res) => {
-    // Connexion à la BDD
-    // Récupération des livres
-    // Vérification de la cnx
+ 
     res.end('Services');
 };
 
 exports.contactCtrl = (req, res) => res.end('Contact');
+
+exports.recipesCtrl = (req, res)=>
+res.json(allRecipes)
 
 
