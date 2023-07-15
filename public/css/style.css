@@ -1,6 +1,12 @@
 body {
 
+
     background: rgb(253, 105, 35);
     color: rgb(0, 0, 0);
 
+
+}
+#title{
+    text-align: center;
+    color: darkred;
 }
