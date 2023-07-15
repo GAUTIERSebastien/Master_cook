@@ -200,7 +200,7 @@
             ]
         }
     ],
-    "measure": [
+    "measures": [
         {
             "gram": "UNIT_GRAM",
             "kilogram": "UNIT_KILOGRAM",
