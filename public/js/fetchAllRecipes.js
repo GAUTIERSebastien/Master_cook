@@ -1,4 +1,5 @@
 import { createMarkup } from "../untils/createMarkup.js";
+import {fetchDelete} from "../js/fetchDelete.js"
 
 const showElement = document.getElementById('showElement');
 
@@ -49,7 +50,10 @@ fetch('https://localhost:4343/recipes', {
           });
           const btnDelete = createMarkup('button', 'Supprimer', titleIng);
           btnDelete.addEventListener('click', ()=>{
+            console.log(recette.id);
+            fetchDelete(recette.id);
               
+
               console.log("supprimer recette ", recette);
 
           });

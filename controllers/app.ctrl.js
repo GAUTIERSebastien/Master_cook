@@ -1,5 +1,6 @@
 const { resolve } = require('path');
-const {allRecipes} = require('../data/db.json')
+const {allRecipes} = require('../data/db.json');
+const { log } = require('console');
 
 exports.homeCtrl = (req, res) => {
 
@@ -7,5 +8,14 @@ exports.homeCtrl = (req, res) => {
 };
 
 exports.recipesCtrl = (req, res)=>
-res.json(allRecipes)
+res.json(allRecipes);
 
+exports.deleteCtrl = (req, res)=> {
+    
+    console.log(req.params);
+
+    const id = req.params.id;
+
+    // const recipe = allRecipes.find(rec=>rec.id==id);
+    console.log(allRecipes.find(rec=>rec.id));
+};
