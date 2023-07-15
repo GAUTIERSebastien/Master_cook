@@ -8,4 +8,4 @@ import { fetchAllRecipes } from './fetchAllRecipes';
     => alors exécute get......js 
 **/
 
-fetchAllRecipes();
+// fetchAllRecipes();
