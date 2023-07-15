@@ -200,22 +200,22 @@
             ]
         }
     ],
-    "measures": [
+    "units": [
         {
-            "gram": "UNIT_GRAM",
-            "kilogram": "UNIT_KILOGRAM",
-            "object": "UNIT_OBJECT",
-            "bag": "UNIT_PACK",
-            "slice": "UNIT_SLICE",
-            "millilitre": "UNIT_MILLILITERS",
-            "litre": "UNIT_LITER",
-            "tablespoon": "UNIT_TABLESPOON",
-            "teaspoon": "UNIT_TEASPOON",
-            "cube": "UNIT_CUBE",
-            "pod": "UNIT_POD",
-            "pinch": "UNIT_PINCH",
-            "sheet": "UNIT_SHEET",
-            "to taste": "UNIT_PM"
+            "UNIT_GRAM": "gram",
+            "UNIT_KILOGRAM": "kilogram",
+            "UNIT_OBJECT": "object",
+            "UNIT_PACK": "bag",
+            "UNIT_SLICE": "slice",
+            "UNIT_MILLILITERS": "millilitre",
+            "UNIT_LITER": "litre",
+            "UNIT_TABLESPOON": "tablespoon",
+            "UNIT_TEASPOON": "teaspoon",
+            "UNIT_CUBE": "cube",
+            "UNIT_POD": "pod",
+            "UNIT_PINCH": "pinch",
+            "UNIT_SHEET": "sheet",
+            "UNIT_PM": "to taste"
         }
     ]
 }
