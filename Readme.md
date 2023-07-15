@@ -9,12 +9,9 @@ Une fois le travail réalisé, effectuer un fork de ce projet et remplir le READ
 ## Initailiser le projet
 
 ```bash
-npm init -y && npm i express && npm i -D nodemon
+npm init -y && npm i express && npm i -D nodemon && npx gentls && npm i cross-env
 ```
 
-```bash
-npx gentls 
-```
 
 ## Aide GitHub
 
