@@ -1,9 +1,10 @@
 body {
 
-    background: red;
+    background: rgba(137, 7, 7, 0.722);
     color: white;
 
 }
+
 .recipeName{
     border: 2px solid teal;
     width: 250px;
@@ -11,5 +12,10 @@ body {
     flex-direction: column;
     justify-content: center;
     margin-left: 250px;
+
+
+#title{
+    text-align: center;
+    color: darkred;
 
 }
