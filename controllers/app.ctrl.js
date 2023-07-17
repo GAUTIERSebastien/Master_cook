@@ -29,6 +29,26 @@ exports.deleteCtrl = (req, res) => {
     }
   });
 
+  if (!isIdExists) {
+    const error = new Error('ID not found');
+    error.name = 'NotFoundError';
+    throw error;
+  }
+
+  // Réécrire le fichier db.json avec les modifications
+  const updatedData = JSON.stringify({ allRecipes });
+  fs.writeFile('data/db.json', updatedData, err => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log('db.json updated successfully');
+  });
+
+  // Le reste du code ici
+};
+
+
 //   if (!isIdExists) {
 //     const error = new Error('ID not found');
 //     error.name = 'NotFoundError';
@@ -36,7 +56,7 @@ exports.deleteCtrl = (req, res) => {
 //   }
 
   // Le reste du code ici
-};
+
 
 
 
