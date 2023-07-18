@@ -1,8 +1,25 @@
 import { createMarkup } from "../untils/createMarkup.js";
 import { fetchDelete } from "../js/fetchDelete.js"
 
-const showElement = document.getElementById('showElement');
 
+const units = {
+    "UNIT_GRAM": "gram",
+    "UNIT_KILOGRAM": "kilogram",
+    "UNIT_OBJECT": "object",
+    "UNIT_PACK": "bag",
+    "UNIT_SLICE": "slice",
+    "UNIT_MILLILITERS": "millilitre",
+    "UNIT_LITER": "litre",
+    "UNIT_TABLESPOON": "tablespoon",
+    "UNIT_TEASPOON": "teaspoon",
+    "UNIT_CUBE": "cube",
+    "UNIT_POD": "pod",
+    "UNIT_PINCH": "pinch",
+    "UNIT_SHEET": "sheet",
+    "UNIT_PM": "to taste"
+  };
+  
+const showElement = document.getElementById('showElement');
 
 fetch('https://localhost:4343/recipes', {
     method: "GET",
@@ -15,7 +32,7 @@ fetch('https://localhost:4343/recipes', {
 )
     .then(res => res.json())
     .then(allRecipes => {
-        // console.log(allRecipes); 
+        console.log(allRecipes); 
         //console.log(allRecipes.recipes.name);
         allRecipes.forEach(recipe => {
             // console.log(recipe.recipes);
@@ -39,15 +56,12 @@ fetch('https://localhost:4343/recipes', {
 
                 const ingredients = recette.ingredients;
                 ingredients.forEach(ingredient => {
-                    // console.log(ingredient.name);
-
-
+                   
                     createMarkup('h3', ingredient.name, cardBody);
                     createMarkup('span', ingredient.quantity, cardBody);
-                    createMarkup('span', ingredient.unit, cardBody); //à modifier pour avoir les resultat du 2eme tableau
-
-
-                })
+                    createMarkup('span', units[ingredient.unit], cardBody);
+                  });
+                  
                 const buttonDiv = createMarkup('div', '', cardBody)
 
                 const btnEdit = createMarkup('button', 'Modifier', buttonDiv, [

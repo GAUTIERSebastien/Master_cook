@@ -3,6 +3,8 @@ const {
     homeCtrl,
     recipesCtrl,
     deleteCtrl,
+    unitsCtrl
+
 
 
 } = require('../controllers/app.ctrl');
@@ -10,5 +12,6 @@ const {
 router.get('/home', homeCtrl);
 router.get('/recipes', recipesCtrl );
 router.delete('/recipes/delete/:id', deleteCtrl);
+router.get('/units', unitsCtrl)
 
 module.exports = router;
