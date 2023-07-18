@@ -1,9 +1,16 @@
-import { createMarkup } from "../untils/createMarkup.js";
+
+import { createMarkup } from "../utils/createMarkup.js";
 import { fetchDelete } from "../js/fetchDelete.js"
 
 const showElement = document.getElementById('showElement');
 
-
+// Ajout du bouton "Ajouter une recette"
+const addButton = createMarkup('button', 'Ajouter une recette', showElement, [{ class: "add-recipe btn btn-success" }]);
+addButton.addEventListener('click', () => {
+    // Logique pour ajouter une recette ici.
+    console.log("Ajouter recette clicked");
+    location.href = "https://localhost:4343/add-recipe-form"
+});
 fetch('https://localhost:4343/recipes', {
     method: "GET",
     headers:
