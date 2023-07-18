@@ -1,7 +1,25 @@
 
-import { createMarkup } from "../untils/createMarkup.js";
-import{handleEditButtonClick,} from "./update.js";
+import { createMarkup } from "../utils/createMarkup.js";
+import { handleEditButtonClick, } from "./update.js";
 import { fetchDelete } from "../js/fetchDelete.js"
+
+
+export const units = {
+    "UNIT_GRAM": "gramme",// "gram",
+    "UNIT_KILOGRAM": "Kg",// "kilogram",
+    "UNIT_OBJECT": "piece",// "object",
+    "UNIT_PACK": "sachet",// "bag",
+    "UNIT_SLICE": "tranche",// "slice",
+    "UNIT_MILLILITERS": "millilitre",
+    "UNIT_LITER": "litre",
+    "UNIT_TABLESPOON": "cuillère à soupe",// "tablespoon",
+    "UNIT_TEASPOON": "cuillère à café",// "teaspoon",
+    "UNIT_CUBE": "cube",
+    "UNIT_POD": "gousse",// "pod",
+    "UNIT_PINCH": "pincer",// "pinch",
+    "UNIT_SHEET": "feuille",// "sheet",
+    "UNIT_PM": "selon son goût" //"to taste"
+};
 
 const showElement = document.getElementById('showElement');
 
@@ -45,8 +63,7 @@ fetch('https://localhost:4343/recipes', {
 
 
                     createMarkup('h3', ingredient.name, cardBody);
-                    createMarkup('span', ingredient.quantity, cardBody);
-                    createMarkup('span', ingredient.unit, cardBody); //à modifier pour avoir les resultat du 2eme tableau
+                    createMarkup('p', ingredient.quantity + " " + units[ingredient.unit], cardBody, [{ class: 'card-text' }]);
 
 
                 })
@@ -57,11 +74,15 @@ fetch('https://localhost:4343/recipes', {
                     { 'data-id': recette.id },
                     { 'data-ingredients': JSON.stringify(recette.ingredients) }
                 ]);
-                btnEdit.addEventListener('click', () => {
-                    handleEditButtonClick(recette.id, JSON.stringify(recette.ingredients));
-                    console.log("Modifier recette :", recette);
 
+
+                // Passer l'ID de la recette, l'objet recette et le titre de la recette à la fonction handleEditButtonClick
+                btnEdit.addEventListener('click', () => {
+                    handleEditButtonClick(recette.id, JSON.stringify(recette.ingredients), recette.title);
+                    console.log("Modifier recette :", recette);
                 });
+
+
                 const btnDelete = createMarkup('button', 'Supprimer', buttonDiv, [{ class: "reload btn btn-danger" }]);
                 btnDelete.addEventListener('click', () => {
                     console.log(recette.id);

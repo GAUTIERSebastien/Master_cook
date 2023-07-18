@@ -1,80 +1,94 @@
-
 import { createMarkup } from "../utils/createMarkup.js";
+import { units } from './fetchAllRecipes.js';
 
-// Fonction pour gérer la soumission du formulaire
-export function handleEditFormSubmit(recipeId, titreModifie, ingredientsModifies) {
-  // Effectuer une requête HTTP pour mettre à jour la recette sur le serveur
-  fetch(`https://localhost:4343/recipes/${recipeId}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      title: titreModifie,
-      ingredients: ingredientsModifies,
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("Recette mise à jour avec succès :", data.recipe);
-      // Vous pouvez mettre à jour l'interface utilisateur ou effectuer d'autres actions ici après la mise à jour de la recette
-    })
-    .catch((error) => {
-      console.error("Une erreur s'est produite lors de la mise à jour de la recette :", error);
-    });
-}
+// Variable pour stocker le formulaire actif
+let activeForm = null;
 
-// Fonction pour créer un formulaire de modification pour une recette
-export function createEditForm(recipeId, titreCourant, ingredientsCourants) {
-  const containerForm = createMarkup("div", "", document.body);
-
-  const form = createMarkup("form", "", containerForm);
-
-  const labelTitre = createMarkup("label", "Titre de la recette :", form);
-  const inputTitre = createMarkup("input", "", form, [
-    { type: "text" },
-    { value: titreCourant },
-  ]);
-
-  const labelIngredients = createMarkup("label", "Ingrédients :", form);
-
-  // Créer un champ de saisie pour chaque ingrédient
-  ingredientsCourants.forEach((ingredient, index) => {
-    const inputIngredient = createMarkup("input", "", form, [
-      { type: "text" },
-      { value: ingredient },
+// Fonction pour gérer l'événement de clic du bouton "Modifier"
+export function handleEditButtonClick(recipeId, ingredientsJSON, recipeTitle) {
+    const ingredients = JSON.parse(ingredientsJSON);
+  
+    // Récupérer l'article (titleIng) correspondant à l'ID du bouton "Modifier"
+    const titleIng = document.querySelector(`[data-id="${recipeId}"]`);
+  
+    // Vérifier si le formulaire est déjà ouvert
+    if (activeForm) {
+      return; // Ne rien faire si le formulaire est déjà ouvert
+    }
+  
+    // Créer le formulaire de modification et l'insérer dans l'article titleIng
+    const form = createMarkup('form', '', titleIng, [{ class: 'edit-form' }]);
+  
+    // Champs pour modifier le titre de la recette
+    const titleLabel = createMarkup('label', 'Titre de la recette:', form);
+    const titleInput = createMarkup('input', '', form, [
+      { type: 'text' },
+      { value: recipeTitle }, // Afficher le titre actuel de la recette dans le champ de saisie
     ]);
-    inputIngredient.dataset.index = index;
-  });
-
-  const boutonModifier = createMarkup("button", "Modifier la recette", form);
-
-  // Ajouter un gestionnaire d'événements à la soumission du formulaire
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const titreModifie = inputTitre.value;
-    const ingredientsModifies = Array.from(form.querySelectorAll("input[data-index]")).map(
-      (input) => input.value
-    );
-    handleEditFormSubmit(recipeId, titreModifie, ingredientsModifies);
-  });
-}
-
-// Fonction pour gérer le clic sur le bouton de modification
-export function handleEditButtonClick(recipeId, ingredientsCourants) {
-  // Effectuer une requête HTTP pour récupérer les détails de la recette en fonction de l'ID de la recette
-  fetch(`https://localhost:4343/home/${recipeId}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      const titreCourant = data.recipe.title;
-      createEditForm(recipeId, titreCourant, ingredientsCourants);
-    })
-    .catch((error) => {
-      console.error("Une erreur s'est produite lors de la récupération des détails de la recette :", error);
+  
+    // Champs pour modifier les ingrédients
+    const ingredientsLabel = createMarkup('label', 'Ingrédients:', form);
+    const ingredientList = createMarkup('div', '', form, [{ class: 'ingredient-list' }]);
+  
+    function createIngredientInput(ingredient) {
+      const ingredientGroup = createMarkup('div', '', ingredientList, [{ class: 'ingredient-group' }]);
+  
+      const nameInput = createMarkup('input', '', ingredientGroup, [
+        { type: 'text' },
+        { value: ingredient.name }, // Afficher le nom actuel de l'ingrédient dans le champ de saisie
+        { placeholder: "Nom de l'ingrédient" },
+      ]);
+  
+      const quantityInput = createMarkup('input', '', ingredientGroup, [
+        { type: 'number' },
+        { value: ingredient.quantity }, // Afficher la quantité actuelle de l'ingrédient dans le champ de saisie
+        { placeholder: 'Quantité' },
+      ]);
+  
+      // Créer l'élément select pour l'unité de l'ingrédient
+      const unitSelect = createMarkup('select', '', ingredientGroup);
+  
+      // Ajouter les options à l'élément select
+      for (const [unitKey, unitName] of Object.entries(units)) {
+        const option = createMarkup('option', unitName, unitSelect, [
+          { value: unitKey },
+          { selected: unitKey === ingredient.unit }, // Définir l'attribut selected pour l'unité actuelle
+        ]);
+      }
+  
+      // Écouteur d'événement pour détecter les changements dans les champs de saisie
+      nameInput.addEventListener('input', () => {
+        ingredient.name = nameInput.value;
+      });
+  
+      quantityInput.addEventListener('input', () => {
+        ingredient.quantity = quantityInput.value;
+      });
+  
+      // Écouteur d'événement pour gérer les changements dans l'élément select d'unité
+      unitSelect.addEventListener('change', () => {
+        ingredient.unit = unitSelect.value;
+      });
+    }
+  
+    // Créer les champs pour les ingrédients existants
+    ingredients.forEach((ingredient) => createIngredientInput(ingredient));
+  
+    // Bouton "Ajouter un ingrédient"
+    const addIngredientButton = createMarkup('button', 'Ajouter un ingrédient', form);
+    addIngredientButton.addEventListener('click', () => {
+      // Créer un nouvel ingrédient avec des valeurs par défaut
+      const newIngredient = {
+        name: '',
+        quantity: '',
+        unit: Object.keys(units)[0], // Sélectionner la première unité par défaut
+      };
+      createIngredientInput(newIngredient);
     });
-}
+  
+    // Bouton "Enregistrer" de type submit
+    const submitButton = createMarkup('button', 'Enregistrer', form, [{ type: 'submit' }]);
+  
+    // Stocker le formulaire actif
+    activeForm = form;
+  }

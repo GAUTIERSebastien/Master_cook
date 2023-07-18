@@ -4,7 +4,7 @@ const router = require('express').Router();
 const {
   homeCtrl,
   recipesCtrl,
-  deleteCtrl,
+  deleteCtrl
 } = require('../controllers/app.ctrl');
 const {
   updateRecipeCtrl,
