@@ -165,6 +165,37 @@
             ]
         },
         {
+            "name": "italian",
+            "recipes": [
+                {
+                    "id": 200,
+                    "title": "panacotta",
+                    "ingredients": [
+                        {
+                            "name": "lait",
+                            "quantity": 1,
+                            "unit": "UNIT_LITER"
+                        },
+                        {
+                            "name": "sucre",
+                            "quantity": 200,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "gelatine",
+                            "quantity": 27,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "gousse vanille",
+                            "quantity": 1,
+                            "unit": "UNIT_POD"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "japanese",
             "recipes": [
                 {
