@@ -6,6 +6,7 @@ export function fetchDelete(id){
     method: "DELETE",
     })
    .then(res=>res.json())
+   
   
 
 

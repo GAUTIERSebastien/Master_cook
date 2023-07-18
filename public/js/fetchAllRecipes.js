@@ -48,13 +48,26 @@ fetch('https://localhost:4343/recipes', {
             console.log("Modifier recette :", recette);
 
           });
-      const btnDelete = createMarkup('button', 'Supprimer', titleIng);
+      const btnDelete = createMarkup('button', 'Supprimer', titleIng, [{class:"reload"}]);
       btnDelete.addEventListener('click', ()=>{
             console.log(recette.id);
-            fetchDelete(recette.id);
+            if(confirm('Souhaitez-vous confirmer ?')) {
+              
+              fetchDelete(recette.id)
+              location.href="https://localhost:4343/home"
+            }
+            else {
+              location.href="https://localhost:4343/home"
+              
+            }
+
+
+            
+             location.href="https://localhost:4343/home"
               
 
             console.log("supprimer recette ", recette);
+            
 
           });
            })
