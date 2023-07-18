@@ -1,7 +1,26 @@
 import { createMarkup } from "../untils/createMarkup.js";
 import { fetchDelete } from "../js/fetchDelete.js"
+import { fetchUpadate } from "../js/fetchUpdate.js"
 
 const showElement = document.getElementById('showElement');
+
+// A réflechir si on le mets ds utils/ car j en ai besoin pour update
+const units = {
+    "UNIT_GRAM": "gram",
+    "UNIT_KILOGRAM": "kilogram",
+    "UNIT_OBJECT": "object",
+    "UNIT_PACK": "bag",
+    "UNIT_SLICE": "slice",
+    "UNIT_MILLILITERS": "millilitre",
+    "UNIT_LITER": "litre",
+    "UNIT_TABLESPOON": "tablespoon",
+    "UNIT_TEASPOON": "teaspoon",
+    "UNIT_CUBE": "cube",
+    "UNIT_POD": "pod",
+    "UNIT_PINCH": "pinch",
+    "UNIT_SHEET": "sheet",
+    "UNIT_PM": "to taste"
+};
 
 
 fetch('https://localhost:4343/recipes', {
@@ -39,25 +58,23 @@ fetch('https://localhost:4343/recipes', {
 
                 const ingredients = recette.ingredients;
                 ingredients.forEach(ingredient => {
-                    // console.log(ingredient.name);
+                    // console.log(ingredient.unit);
 
 
                     createMarkup('h3', ingredient.name, cardBody);
-                    createMarkup('span', ingredient.quantity, cardBody);
-                    createMarkup('span', ingredient.unit, cardBody); //à modifier pour avoir les resultat du 2eme tableau
+                    createMarkup('span', ingredient.quantity , cardBody);
+                    createMarkup('span', units[ingredient.unit], cardBody); //à modifier pour avoir les resultat du 2eme tableau
 
 
                 })
                 const buttonDiv = createMarkup('div', '', cardBody)
 
-                const btnEdit = createMarkup('button', 'Modifier', buttonDiv, [
-                    { class: 'edit-recipe btn btn-warning' },
-                    { 'data-id': recette.id },
-                    { 'data-ingredients': JSON.stringify(recette.ingredients) }
-                ]);
+                const btnEdit = createMarkup('button', 'Modifier', buttonDiv, [{class: "btn btn-warning"}] );
                 btnEdit.addEventListener('click', () => {
-                    handleEditButtonClick(recette.id, JSON.stringify(recette.ingredients));
-                    console.log("Modifier recette :", recette);
+                    
+                    console.log("Modifier recette dans file fetclAllRecipes : ", recette);
+                    console.log('Id recupérer au click sur btn Modifié : ', recette.id)
+                    fetchUpadate(recette.id, recette)
 
                 });
                 const btnDelete = createMarkup('button', 'Supprimer', buttonDiv, [{ class: "reload btn btn-danger" }]);
@@ -72,8 +89,6 @@ fetch('https://localhost:4343/recipes', {
                         location.href = "https://localhost:4343/home"
 
                     }
-
-
 
                     location.href = "https://localhost:4343/home"
 
