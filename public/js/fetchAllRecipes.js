@@ -1,4 +1,5 @@
 import { createMarkup } from "../untils/createMarkup.js";
+import {fetchDelete} from "../js/fetchDelete.js"
 
 const showElement = document.getElementById('showElement');
 
@@ -11,7 +12,10 @@ fetch('https://localhost:4343/recipes', {
 
     },
 }
-)
+
+) 
+ 
+   
     .then(res => res.json())
     .then(allRecipes => {
         // console.log(allRecipes); 
@@ -59,14 +63,31 @@ fetch('https://localhost:4343/recipes', {
                 });
 
 
+      const btnDelete = createMarkup('button', 'Supprimer', buttonDiv, [{class:'btn btn-danger'}]);
+      btnDelete.addEventListener('click', ()=>{
+            console.log(recette.id);
+            if(confirm('Souhaitez-vous confirmer ?')) {
+              
+              fetchDelete(recette.id)
+              location.href="https://localhost:4343/home"
+            }
+            else {
+              location.href="https://localhost:4343/home"
+              
+            }
 
-                const btnDelete = createMarkup('button', 'Supprimer', buttonDiv, [{ class: 'btn btn-danger' }]);
-                btnDelete.addEventListener('click', () => {
 
-                    console.log("supprimer recette ", recette);
+            
+             location.href="https://localhost:4343/home"
+              
 
-                });
-            })
+            console.log("supprimer recette ", recette);
+            
+
+          });
+           })
+
+
         })
 
     });
