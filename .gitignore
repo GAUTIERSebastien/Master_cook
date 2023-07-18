@@ -1,5 +1,0 @@
-node_modules
-ssl/*
-!ssl/.gitkeep
-env/*
-!env/*~

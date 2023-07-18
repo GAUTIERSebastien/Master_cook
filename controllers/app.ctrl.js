@@ -13,6 +13,7 @@ exports.recipesCtrl = (req, res) => {
 exports.deleteCtrl = (req, res) => {
   const id = req.params.id;
   let isIdExists = false;
+  console.log(req.params.id)
 
   allRecipes.forEach(recipe => {
     const recipes = recipe.recipes;

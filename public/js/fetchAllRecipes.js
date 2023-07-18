@@ -9,13 +9,9 @@ fetch('https://localhost:4343/recipes', {
     headers:
     {
         "content-type": "application/json",
-
     },
-}
+}) 
 
-) 
- 
-   
     .then(res => res.json())
     .then(allRecipes => {
         // console.log(allRecipes); 
