@@ -1,82 +1,80 @@
- // Fonction pour générer le formulaire de modification de recette
- function generateRecipeForm() {
-    var recipeSelect = document.getElementById('recipeSelect');
-    var recipeId = recipeSelect.value;
-    var recipe = getRecipeById(recipeId);
 
-    // Vérifier si la recette existe
-    if (recipe) {
-      var formContainer = document.getElementById('formContainer');
-      formContainer.innerHTML = ''; // Réinitialiser le formulaire
+import { createMarkup } from "../utils/createMarkup.js";
 
-      // Créer les éléments du formulaire
-      createMarkup('label', 'Titre de la recette: ', formContainer);
-      var titleInput = createMarkup('input', '', formContainer, [{ 'type': 'text' }, { 'name': 'recipeTitle' }, { 'value': recipe.title }]);
-
-      createMarkup('label', 'Ingrédients: <br>', formContainer);
-      var ingredientsContainer = document.createElement('div');
-
-      // Ajouter les champs d'ingrédients
-      for (var i = 0; i < recipe.ingredients.length; i++) {
-        var ingredient = recipe.ingredients[i];
-
-        var ingredientDiv = document.createElement('div');
-
-        var ingredientName = createMarkup('input', '', ingredientDiv, [{ 'type': 'text' }, { 'name': 'ingredientName' }, { 'value': ingredient.name }]);
-
-        var ingredientQuantity = createMarkup('input', '', ingredientDiv, [{ 'type': 'number' }, { 'name': 'ingredientQuantity' }, { 'value': ingredient.quantity }]);
-
-        var ingredientUnit = document.createElement('select');
-        ingredientUnit.setAttribute('name', 'ingredientUnit');
-
-        // Ajouter les options pour les unités de mesure
-        for (var j = 0; j < units.length; j++) {
-          var unit = units[j];
-          createMarkup('option', unit, ingredientUnit, [{ 'value': unit }]);
-        }
-
-        // Ajouter les éléments d'ingrédient au conteneur
-        ingredientDiv.appendChild(ingredientName);
-        ingredientDiv.appendChild(ingredientQuantity);
-        ingredientDiv.appendChild(ingredientUnit);
-        ingredientsContainer.appendChild(ingredientDiv);
-      }
-
-      // Ajouter les éléments au formulaire
-      formContainer.appendChild(ingredientsContainer);
-    }
-  }
-
-  // Fonction pour récupérer une recette par son ID
-  function getRecipeById(id) {
-    for (var i = 0; i < allRecipes.length; i++) {
-      var recipeCategory = allRecipes[i];
-      for (var j = 0; j < recipeCategory.recipes.length; j++) {
-        var recipe = recipeCategory.recipes[j];
-        if (recipe.id === id) {
-          return recipe;
-        }
-      }
-    }
-    return null; // Si aucune recette n'est trouvée
-  }
-
-  // Récupérer les données du fichier db.json
-  fetchData('db.json')
-    .then(data => {
-      var allRecipes = data.allRecipes;
-      var units = data.units;
-
-      // Remplir la liste déroulante avec les recettes
-      var recipeSelect = document.getElementById('recipeSelect');
-      for (var i = 0; i < allRecipes.length; i++) {
-        var recipeCategory = allRecipes[i];
-        for (var j = 0; j < recipeCategory.recipes.length; j++) {
-          var recipe = recipeCategory.recipes[j];
-          createMarkup('option', recipe.title, recipeSelect, [{ 'value': recipe.id }]);
-        }
-      }
-
-      // Ajouter un gestionnaire d'événement pour générer le formulaire lors de la sélection d'une recette
-      recipeSelect.addEventListener('change', generateRecipeForm);
+// Fonction pour gérer la soumission du formulaire
+export function handleEditFormSubmit(recipeId, titreModifie, ingredientsModifies) {
+  // Effectuer une requête HTTP pour mettre à jour la recette sur le serveur
+  fetch(`https://localhost:4343/recipes/${recipeId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      title: titreModifie,
+      ingredients: ingredientsModifies,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Recette mise à jour avec succès :", data.recipe);
+      // Vous pouvez mettre à jour l'interface utilisateur ou effectuer d'autres actions ici après la mise à jour de la recette
+    })
+    .catch((error) => {
+      console.error("Une erreur s'est produite lors de la mise à jour de la recette :", error);
     });
+}
+
+// Fonction pour créer un formulaire de modification pour une recette
+export function createEditForm(recipeId, titreCourant, ingredientsCourants) {
+  const containerForm = createMarkup("div", "", document.body);
+
+  const form = createMarkup("form", "", containerForm);
+
+  const labelTitre = createMarkup("label", "Titre de la recette :", form);
+  const inputTitre = createMarkup("input", "", form, [
+    { type: "text" },
+    { value: titreCourant },
+  ]);
+
+  const labelIngredients = createMarkup("label", "Ingrédients :", form);
+
+  // Créer un champ de saisie pour chaque ingrédient
+  ingredientsCourants.forEach((ingredient, index) => {
+    const inputIngredient = createMarkup("input", "", form, [
+      { type: "text" },
+      { value: ingredient },
+    ]);
+    inputIngredient.dataset.index = index;
+  });
+
+  const boutonModifier = createMarkup("button", "Modifier la recette", form);
+
+  // Ajouter un gestionnaire d'événements à la soumission du formulaire
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const titreModifie = inputTitre.value;
+    const ingredientsModifies = Array.from(form.querySelectorAll("input[data-index]")).map(
+      (input) => input.value
+    );
+    handleEditFormSubmit(recipeId, titreModifie, ingredientsModifies);
+  });
+}
+
+// Fonction pour gérer le clic sur le bouton de modification
+export function handleEditButtonClick(recipeId, ingredientsCourants) {
+  // Effectuer une requête HTTP pour récupérer les détails de la recette en fonction de l'ID de la recette
+  fetch(`https://localhost:4343/home/${recipeId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      const titreCourant = data.recipe.title;
+      createEditForm(recipeId, titreCourant, ingredientsCourants);
+    })
+    .catch((error) => {
+      console.error("Une erreur s'est produite lors de la récupération des détails de la recette :", error);
+    });
+}

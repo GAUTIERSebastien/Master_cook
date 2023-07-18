@@ -1,4 +1,6 @@
-import { createMarkup } from "../untils/createMarkup.js";
+import { createMarkup } from "../utils/createMarkup.js";
+
+import{handleEditButtonClick,} from "./update.js";
 
 const showElement = document.getElementById('showElement');
 
@@ -21,6 +23,7 @@ fetch('https://localhost:4343/recipes', {
             //recuperation des recettes par Pays
             //console.log(recipe);
             createMarkup('h1', recipe.name, showElement,);
+            const pays = createMarkup('section', "", showElement,[{class: "row"}]);
 
 
             const recettes = recipe.recipes;
@@ -28,26 +31,38 @@ fetch('https://localhost:4343/recipes', {
                 // console.log(recette.ingredients);
                 //recuperation de toutes les recettes (uniquement!)
                 //console.log(recette);
-                const titleIng = createMarkup('section', '', showElement, [{ class: "recipeName" }])
+                const titleIng = createMarkup('article', '', pays, [{ class: "recipeName card col-4" }])
 
-                createMarkup('h2', recette.title, titleIng);
+                createMarkup('h2', recette.title, titleIng, [{class: "card-title"}]);
 
+                const cardBody= createMarkup('div', "", titleIng,[{class:"card-body"}]);
 
                 const ingredients = recette.ingredients;
                 ingredients.forEach(ingredient => {
                     // console.log(ingredient.name);
 
-                    createMarkup('p', ingredient.name, titleIng);
+                    createMarkup('h3', ingredient.name, cardBody);
+                    createMarkup('span', ingredient.quantity, cardBody);
+                    createMarkup('span', ingredient.unit, cardBody); //à modifier pour avoir les resultat du 2eme tableau
+
+
+
                     //creation des buttons supprimer/modifier (avec des contantes btn edit & delete, le parent sera le titleIng (a recuperer avec la class ou l'id (a voir)))
 
                 })
-                const btnEdit = createMarkup('button', 'Modifier', titleIng);
-                btnEdit.addEventListener('click', () => {
+                const buttonDiv=createMarkup('div','',cardBody)
+                const btnEdit = createMarkup('button', 'Modifier', buttonDiv, [
+                    { class: 'edit-recipe btn btn-warning' },
+                    { 'data-id': recette.id },
+                    { 'data-ingredients': JSON.stringify(recette.ingredients) }
+                ]);
+                btnEdit.addEventListener("click", () => {
+                    handleEditButtonClick(recette.id, JSON.stringify(recette.ingredients));
+                  });
+                  
 
-                    console.log("Modifier recette :", recette);
 
-                });
-                const btnDelete = createMarkup('button', 'Supprimer', titleIng);
+                const btnDelete = createMarkup('button', 'Supprimer', buttonDiv,[{ class:'btn btn-danger'}]);
                 btnDelete.addEventListener('click', () => {
 
                     console.log("supprimer recette ", recette);

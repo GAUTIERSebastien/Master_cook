@@ -59,6 +59,58 @@
                             "unit": "UNIT_POD"
                         }
                     ]
+                },
+                {
+                    "id": 103,
+                    "title": "riz au lait",
+                    "ingredients": [
+                        {
+                            "name": "lait",
+                            "quantity": 1,
+                            "unit": "UNIT_LITER"
+                        },
+                        {
+                            "name": "sucre",
+                            "quantity": 400,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "riz",
+                            "quantity": 200,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "gousse vanille",
+                            "quantity": 1,
+                            "unit": "UNIT_POD"
+                        }
+                    ]
+                },
+                {
+                    "id": 104,
+                    "title": "creme brullé",
+                    "ingredients": [
+                        {
+                            "name": "lait",
+                            "quantity": 1,
+                            "unit": "UNIT_LITER"
+                        },
+                        {
+                            "name": "sucre",
+                            "quantity": 100,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "jaune d'oeuf",
+                            "quantity": 10,
+                            "unit": "UNIT_OBJECT"
+                        },
+                        {
+                            "name": "gousse vanille",
+                            "quantity": 1,
+                            "unit": "UNIT_POD"
+                        }
+                    ]
                 }
             ]
         },

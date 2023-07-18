@@ -1,0 +1,548 @@
+public>home.html
+
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./masterchef.svg" type="image/x-icon">
+    <!-- Style -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>Master COOK</title>
+</head>
+
+<body>
+    <h1 id="title">MASTER<img src="./masterchef.svg" width="40px" alt="">COOK</h1>
+
+    <div id="showElement">
+    </div>
+
+    <script src="./js/fetchAllRecipes.js" type="module"></script>
+    <script src="./js/update.js" type="module"></script>
+</body>
+
+</html>
+
+
+data>db.json
+
+
+{
+    "allRecipes": [
+        {
+            "name": "french",
+            "recipes": [
+                {
+                    "id": 100,
+                    "title": "creme anglaise",
+                    "ingredients": [
+                        {
+                            "name": "lait",
+                            "quantity": 1,
+                            "unit": "UNIT_LITER"
+                        },
+                        {
+                            "name": "sucre",
+                            "quantity": 250,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "jaune d'oeuf",
+                            "quantity": 8,
+                            "unit": "UNIT_OBJECT"
+                        },
+                        {
+                            "name": "gousse vanille",
+                            "quantity": 1,
+                            "unit": "UNIT_POD"
+                        }
+                    ]
+                },
+                {
+                    "id": 101,
+                    "title": "creme patisiere",
+                    "ingredients": [
+                        {
+                            "name": "lait",
+                            "quantity": 1,
+                            "unit": "UNIT_LITER"
+                        },
+                        {
+                            "name": "sucre",
+                            "quantity": 250,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "farine",
+                            "quantity": 125,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "jaune d'oeuf",
+                            "quantity": 8,
+                            "unit": "UNIT_OBJECT"
+                        },
+                        {
+                            "name": "gousse vanille",
+                            "quantity": 1,
+                            "unit": "UNIT_POD"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "american",
+            "recipes": [
+                {
+                    "id": 300,
+                    "title": "wrap",
+                    "ingredients": [
+                        {
+                            "name": "tortilla",
+                            "quantity": 4,
+                            "unit": "UNIT_OBJECT"
+                        },
+                        {
+                            "name": "salade",
+                            "quantity": 1,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "tomate",
+                            "quantity": 9,
+                            "unit": "UNIT_SLICE"
+                        },
+                        {
+                            "name": "concombre",
+                            "quantity": 12,
+                            "unit": "UNIT_SLICE"
+                        },
+                        {
+                            "name": "oignon",
+                            "quantity": 4,
+                            "unit": "UNIT_SLICE"
+                        },
+                        {
+                            "name": "poulet",
+                            "quantity": 300,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "fromage",
+                            "quantity": 4,
+                            "unit": "UNIT_SLICE"
+                        },
+                        {
+                            "name": "sauce au choix",
+                            "unit": "UNIT_PM"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "japanese",
+            "recipes": [
+                {
+                    "id": 200,
+                    "title": "sushi",
+                    "ingredients": [
+                        {
+                            "name": "riz",
+                            "quantity": 500,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "vinaigre de riz",
+                            "quantity": 60,
+                            "unit": "UNIT_MILLILITERS"
+                        },
+                        {
+                            "name": "sucre",
+                            "quantity": 30,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "sel",
+                            "quantity": 5,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "saumon",
+                            "quantity": 200,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "avocat",
+                            "quantity": 1,
+                            "unit": "UNIT_OBJECT"
+                        },
+                        {
+                            "name": "algue nori",
+                            "quantity": 10,
+                            "unit": "UNIT_SHEET"
+                        }
+                    ]
+                },
+                {
+                    "id": 201,
+                    "title": "ramen",
+                    "ingredients": [
+                        {
+                            "name": "nouilles ramen",
+                            "quantity": 2,
+                            "unit": "UNIT_PACK"
+                        },
+                        {
+                            "name": "bouillon de poulet",
+                            "quantity": 800,
+                            "unit": "UNIT_MILLILITERS"
+                        },
+                        {
+                            "name": "filet de porc",
+                            "quantity": 200,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "œuf",
+                            "quantity": 2,
+                            "unit": "UNIT_OBJECT"
+                        },
+                        {
+                            "name": "oignon vert",
+                            "quantity": 2,
+                            "unit": "UNIT_OBJECT"
+                        },
+                        {
+                            "name": "pousse de bambou",
+                            "quantity": 100,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "algue nori",
+                            "quantity": 2,
+                            "unit": "UNIT_SHEET"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "units": [
+        {
+            "UNIT_GRAM": "gram",
+            "UNIT_KILOGRAM": "kilogram",
+            "UNIT_OBJECT": "object",
+            "UNIT_PACK": "bag",
+            "UNIT_SLICE": "slice",
+            "UNIT_MILLILITERS": "millilitre",
+            "UNIT_LITER": "litre",
+            "UNIT_TABLESPOON": "tablespoon",
+            "UNIT_TEASPOON": "teaspoon",
+            "UNIT_CUBE": "cube",
+            "UNIT_POD": "pod",
+            "UNIT_PINCH": "pinch",
+            "UNIT_SHEET": "sheet",
+            "UNIT_PM": "to taste"
+        }
+    ]
+}
+
+
+public>js>fetchAllRecipes.js
+
+
+
+import { createMarkup } from "../untils/createMarkup.js";
+
+import{handleEditButtonClick,handleEditFormSubmit,createEditForm} from "./update.js";
+
+const showElement = document.getElementById('showElement');
+
+
+fetch('https://localhost:4343/recipes', {
+    method: "GET",
+    headers:
+    {
+        "content-type": "application/json",
+
+    },
+}
+)
+    .then(res => res.json())
+    .then(allRecipes => {
+        // console.log(allRecipes); 
+        //console.log(allRecipes.recipes.name);
+        allRecipes.forEach(recipe => {
+            // console.log(recipe.recipes);
+            //recuperation des recettes par Pays
+            //console.log(recipe);
+            createMarkup('h1', recipe.name, showElement,);
+
+
+            const recettes = recipe.recipes;
+            recettes.forEach(recette => {
+                // console.log(recette.ingredients);
+                //recuperation de toutes les recettes (uniquement!)
+                //console.log(recette);
+                const titleIng = createMarkup('section', '', showElement, [{ class: "recipeName" }])
+
+                createMarkup('h2', recette.title, titleIng);
+
+
+                const ingredients = recette.ingredients;
+                ingredients.forEach(ingredient => {
+                    // console.log(ingredient.name);
+
+                    createMarkup('p', ingredient.name, titleIng);
+                    //creation des buttons supprimer/modifier (avec des contantes btn edit & delete, le parent sera le titleIng (a recuperer avec la class ou l'id (a voir)))
+
+                })
+
+                const btnEdit = createMarkup('button', 'Modifier', titleIng, [
+                    { class: 'edit-recipe' },
+                    { 'data-id': recette.id },
+                    { 'data-ingredients': JSON.stringify(recette.ingredients) }
+                ]);
+                btnEdit.addEventListener("click", () => {
+                    handleEditButtonClick(recette.id, recette.ingredients);
+                  });
+                  
+
+
+                const btnDelete = createMarkup('button', 'Supprimer', titleIng);
+                btnDelete.addEventListener('click', () => {
+
+                    console.log("supprimer recette ", recette);
+
+                });
+            })
+        })
+
+    });
+
+
+
+
+
+
+public>utils>createMarkup.js
+
+
+export function createMarkup(markupname, text, parent, attributes = []) {
+    const markup = document.createElement(markupname);
+    markup.textContent = text;
+    parent.appendChild(markup);
+    for (const attribute of attributes) {
+      for (let key in attribute) {
+        markup.setAttribute(key, attribute[key]);
+      }
+    }
+    return markup;
+  }
+
+
+
+  controllers>app.ctrl.js
+
+
+  const { resolve } = require('path');
+const {allRecipes} = require('../data/db.json')
+
+exports.homeCtrl = (req, res) => {
+
+    res.sendFile(resolve('public', 'home.html'));
+};
+
+exports.recipesCtrl = (req, res)=>
+res.json(allRecipes)
+
+
+controllers>allRecipes.ctrl.js
+
+
+const data = require('../data/db.json');
+
+exports.getAllRecipes = (req, res) => {
+    try {
+        res.status(200).json(data.allRecipes);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+
+controllers>allRecipes.ctrl.js
+
+
+const data = require('../data/db.json');
+
+exports.getAllRecipes = (req, res) => {
+    try {
+        res.status(200).json(data.allRecipes);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+
+
+
+controllers>recipes.ctrl.js
+
+
+
+// controllers/recipes.ctrl.js
+
+const data = require('../data/db.json');
+
+exports.updateRecipeCtrl = (req, res) => {
+  const { recipeId } = req.params;
+  const { title } = req.body;
+
+  // Recherche de la recette correspondante dans la base de données
+  const recipe = data.allRecipes.flatMap(country => country.recipes).find(recipe => recipe.id === parseInt(recipeId));
+
+  if (!recipe) {
+    return res.status(404).json({ message: "Recette non trouvée." });
+  }
+
+  // Mise à jour du titre de la recette
+  recipe.title = title;
+
+  res.status(200).json({ message: "Recette mise à jour avec succès.", recipe });
+};
+
+exports.updateIngredientsCtrl = (req, res) => {
+  const { recipeId } = req.params;
+  const { ingredients } = req.body;
+
+  // Recherche de la recette correspondante dans la base de données
+  const recipe = data.allRecipes.flatMap(country => country.recipes).find(recipe => recipe.id === parseInt(recipeId));
+
+  if (!recipe) {
+    return res.status(404).json({ message: "Recette non trouvée." });
+  }
+
+  // Mise à jour des ingrédients de la recette
+  recipe.ingredients = ingredients;
+
+  res.status(200).json({ message: "Ingrédients de recette mis à jour avec succès.", recipe });
+};
+
+
+
+
+routing>app.routes.js
+
+
+
+
+// routes/app.routes.js
+
+const router = require('express').Router();
+const {
+  homeCtrl,
+  recipesCtrl,
+} = require('../controllers/app.ctrl');
+const {
+  updateRecipeCtrl,
+  updateIngredientsCtrl
+} = require('../controllers/recipes.ctrl.js');
+
+router.get('/home', homeCtrl);
+router.get('/recipes', recipesCtrl);
+router.put('/recipes/:recipeId', updateRecipeCtrl);
+router.put('/ingredients/:recipeId', updateIngredientsCtrl);
+
+module.exports = router;
+
+
+routing>index.js
+
+
+//On appelle les routes 
+
+const router = require('express').Router();
+const appRoutes = require('./app.routes');
+
+
+router.use(appRoutes);
+
+
+router.get('*', (req, res) => res.redirect('/home'));
+
+module.exports = router;
+
+
+
+app.js
+
+
+
+const { resolve } = require('path');
+const express = require('express');
+const app = express();
+
+const router = require('./routing');
+
+// CONFIGURATION DE L'APP
+app.use(express.static(resolve('public')));
+app.use(router);
+
+
+module.exports = app;
+
+
+
+
+
+public>js>update.js
+
+
+
+// controllers/recipes.ctrl.js
+
+const data = require('../data/db.json');
+
+exports.updateRecipeCtrl = (req, res) => {
+  const { recipeId } = req.params;
+  const { title } = req.body;
+
+  // Recherche de la recette correspondante dans la base de données
+  const recipe = data.allRecipes
+  .flatMap(country => country.recipes)
+  .find(recipe => recipe.id === parseInt(recipeId));
+
+  if (!recipe) {
+    return res.status(404).json({ message: "Recette non trouvée." });
+  }
+
+  // Mise à jour du titre de la recette
+  recipe.title = title;
+
+  res.status(200).json({ message: "Recette mise à jour avec succès.", recipe });
+};
+
+exports.updateIngredientsCtrl = (req, res) => {
+  const { recipeId } = req.params;
+  const { ingredients } = req.body;
+
+  // Recherche de la recette correspondante dans la base de données
+  const recipe = data.allRecipes.flatMap(country => country.recipes).find(recipe => recipe.id === parseInt(recipeId));
+
+  if (!recipe) {
+    return res.status(404).json({ message: "Recette non trouvée." });
+  }
+
+  // Mise à jour des ingrédients de la recette
+  recipe.ingredients = ingredients;
+
+  res.status(200).json({ message: "Ingrédients de recette mis à jour avec succès.", recipe });
+};
