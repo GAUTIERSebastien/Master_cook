@@ -1,4 +1,5 @@
 const data = require('../data/db.json');
+const { recipesCtrl } = require('./app.ctrl');
 
 exports.getAllRecipes = (req, res) => {
     try {
