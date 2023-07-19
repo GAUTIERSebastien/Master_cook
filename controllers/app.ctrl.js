@@ -10,6 +10,12 @@ exports.recipesCtrl = (req, res) => {
   res.json(allRecipes);
 };
 
+// exports.addRecipeCtrl = (req, res) => {
+//   res.jon(allRecipes.)
+// }
+
+
+
 exports.deleteCtrl = (req, res) => {
   const id = req.params.id;
   let isIdExists = false;
@@ -45,7 +51,7 @@ exports.deleteCtrl = (req, res) => {
     console.log('db.json updated successfully');
   });
 
-  // Le reste du code ici
+
 };
 
 

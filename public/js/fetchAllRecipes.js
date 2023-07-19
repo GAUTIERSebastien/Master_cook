@@ -1,6 +1,8 @@
 import { createMarkup } from "../utils/createMarkup.js";
 import { fetchDelete } from "../js/fetchDelete.js";
 import {units} from "../utils/unit.js";
+import { handleFormSubmit } from './handleFormSubmit.js';
+
 
 const showElement = document.getElementById('showElement');
 

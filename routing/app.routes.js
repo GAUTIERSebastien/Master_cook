@@ -9,6 +9,7 @@ const {
 
 router.get('/home', homeCtrl);
 router.get('/recipes', recipesCtrl );
+// router.post('/recipe', addRecipeCtrl);
 router.delete('/recipes/delete/:id', deleteCtrl);
 
 module.exports = router;
