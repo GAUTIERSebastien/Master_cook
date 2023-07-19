@@ -1,6 +1,4 @@
 //Ecoute le submit du formulaire de création de recette
-// handleFormSubmit.js
-// handleFormSubmit.js
 
 export function handleFormSubmit(event) {
     event.preventDefault();
@@ -8,9 +6,9 @@ export function handleFormSubmit(event) {
     // Génération d'un ID de recette aléatoire
     const recipeId = Math.floor(Math.random() * 10000);
 
-    // Récupération du titre et du pays de la recette
+    // Récupération du titre et du nom de pays de la recette
     const title = event.target.elements.title.value;
-    const country = event.target.elements.country.value;
+    const name = event.target.elements.name.value;
 
     // Récupération des ingrédients
     const ingredients = [];
@@ -35,7 +33,7 @@ export function handleFormSubmit(event) {
     const recipe = {
         id: recipeId,
         title: title,
-        country: country,
+        name: name,
         ingredients: ingredients,
     };
 

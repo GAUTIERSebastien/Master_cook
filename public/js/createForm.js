@@ -27,7 +27,7 @@ export function createForm() {
         // Création du formulaire d'ajout de recette
         const form = createMarkup('form', '', document.body, [{ id: "recipe-form" }]);
         createMarkup('input', '', form, [{ placeholder: 'Titre de la recette', name: 'title', required: 'true' }]);
-        createMarkup('input', '', form, [{ placeholder: 'Pays', name: 'country', required: 'true' }]);
+        createMarkup('input', '', form, [{ placeholder: 'Pays', name: 'name', required: 'true' }]);
     
         const ingredientsDiv = createMarkup('div', '', form, [{ id: 'ingredients' }]);
         createMarkup('h2', 'Ingredients', ingredientsDiv);

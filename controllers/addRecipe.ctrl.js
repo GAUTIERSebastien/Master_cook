@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid'); // Importez le module uuid pour génére
 exports.addRecipeCtrl = (req, res) => {
     const recipe = req.body;
     const title = recipe.title;
-    const country = recipe.country;
+    const name = recipe.name;
     let found = false;
 
     // Générez un ID unique pour la recette
@@ -16,17 +16,17 @@ exports.addRecipeCtrl = (req, res) => {
     const allRecipes = db.allRecipes;
 
     for (let i = 0; i < allRecipes.length; i++) {
-        if (allRecipes[i].name === country) {
+        if (allRecipes[i].name === name) {
             allRecipes[i].recipes.push(recipe);
             found = true;
             break;
-        }
+        }        
     }
    
     // Si la gastronomie n'existe pas, créez-en une nouvelle
     if (!found) {
         allRecipes.push({
-            name: country,
+            name: name,
             recipes: [recipe]
         });
     }
