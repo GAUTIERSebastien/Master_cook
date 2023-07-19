@@ -1,13 +1,16 @@
 const fs = require('fs');
 const { allRecipes } = require('../data/db.json');
-
+const { v4: uuidv4 } = require('uuid'); // Importez le module uuid pour générer des ID uniques
 
 exports.addRecipeCtrl = (req, res) => {
     const recipe = req.body;
     const title = recipe.title;
     const country = recipe.country;
     let found = false;
-  
+
+    // Générez un ID unique pour la recette
+    recipe.id = uuidv4(); 
+
     // Chargez db.json chaque fois que vous devez l'utiliser
     const db = JSON.parse(fs.readFileSync('data/db.json', 'utf8'));
     const allRecipes = db.allRecipes;
