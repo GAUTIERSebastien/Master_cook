@@ -1,23 +1,29 @@
 const fs = require('fs');
 const { allRecipes } = require('../data/db.json');
 
+
 exports.addRecipeCtrl = (req, res) => {
     const recipe = req.body;
-    const name = recipe.name;
+    const title = recipe.title;
+    const country = recipe.country;
     let found = false;
   
+    // Chargez db.json chaque fois que vous devez l'utiliser
+    const db = JSON.parse(fs.readFileSync('data/db.json', 'utf8'));
+    const allRecipes = db.allRecipes;
+
     for (let i = 0; i < allRecipes.length; i++) {
-        if (allRecipes[i].name === name) {
+        if (allRecipes[i].name === country) {
             allRecipes[i].recipes.push(recipe);
             found = true;
             break;
         }
     }
-    
+   
     // Si la gastronomie n'existe pas, créez-en une nouvelle
     if (!found) {
         allRecipes.push({
-            name: name,
+            name: country,
             recipes: [recipe]
         });
     }
@@ -33,4 +39,3 @@ exports.addRecipeCtrl = (req, res) => {
         return res.status(200).send({ message: 'Recette ajoutée avec succès' });
     });
 };
-

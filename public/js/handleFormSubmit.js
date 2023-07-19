@@ -1,5 +1,6 @@
 //Ecoute le submit du formulaire de création de recette
 // handleFormSubmit.js
+// handleFormSubmit.js
 
 export function handleFormSubmit(event) {
     event.preventDefault();
@@ -39,5 +40,20 @@ export function handleFormSubmit(event) {
     };
 
     console.log(recipe); // Affichage de l'objet de recette dans la console
-}
 
+    // Envoi de la recette à l'API
+    fetch('https://localhost:4343/recipes', {
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+        },
+        body: JSON.stringify(recipe) // Conversion de l'objet de recette en JSON
+    })
+    .then(response => response.json()) // Transformation de la réponse en JSON
+    .then(data => {
+        console.log(data); // Affichage de la réponse de l'API
+    })
+    .catch(err => {
+        console.error(err); // Affichage des erreurs éventuelles
+    });
+}
