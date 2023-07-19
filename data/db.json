@@ -10,7 +10,7 @@
                         {
                             "name": "lait",
                             "quantity": 1,
-                            "unit": "UNIT_LITER"
+                              "unit": "UNIT_LITER"
                         },
                         {
                             "name": "sucre",
