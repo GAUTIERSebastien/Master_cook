@@ -2,6 +2,9 @@ import { createMarkup } from "../utils/createMarkup.js";
 import { handleFormSubmit } from "./handleFormSubmit.js";
 import { units } from "../utils/unit.js";
 
+
+//***FORMULAIRE POUR CRÉER UNE RECETTE***// 
+
 // Ajout d'un champ ingrédient
 function addIngredientFields(ingredientsDiv, index) {
     createMarkup('input', '', ingredientsDiv, [{ placeholder: 'Nom de l\'ingredient', name: `ingredientName${index}`, required: 'true' }]);
@@ -30,7 +33,7 @@ export function createForm() {
         createMarkup('h2', 'Ingredients', ingredientsDiv);
     
         // Création des champs d'ingrédient par défaut
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 1; i++) {
             addIngredientFields(ingredientsDiv, i);
         }
     
