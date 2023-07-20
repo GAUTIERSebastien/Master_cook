@@ -1,13 +1,11 @@
 import { createMarkup } from "../utils/createMarkup.js";
 import { fetchDelete } from "../js/fetchDelete.js";
-// import {units} from "../utils/unit.js";
-// import { handleFormSubmit } from './handleFormSubmit.js';
 import { createForm } from './createForm.js';
 
 
 const showElement = document.getElementById('showElement');
 
-// Creation du bouton nouvelle recette pui du formulaire
+// Creation du bouton nouvelle recette puis du formulaire
 createForm();
 
 

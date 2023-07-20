@@ -1,4 +1,5 @@
-//Ecoute le submit du formulaire de création de recette
+
+//**Ecoute le submit du formulaire de création de recette**//
 
 export function handleFormSubmit(event) {
     event.preventDefault();
