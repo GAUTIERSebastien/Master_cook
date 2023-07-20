@@ -1,7 +1,7 @@
 {
     "allRecipes": [
         {
-            "name": "french",
+            "name": "france",
             "recipes": [
                 {
                     "id": 100,
@@ -88,7 +88,7 @@
                 },
                 {
                     "id": 104,
-                    "title": "creme brullé",
+                    "title": "creme brulée",
                     "ingredients": [
                         {
                             "name": "lait",
@@ -115,7 +115,7 @@
             ]
         },
         {
-            "name": "american",
+            "name": "amerique",
             "recipes": [
                 {
                     "id": 300,
@@ -165,7 +165,7 @@
             ]
         },
         {
-            "name": "italian",
+            "name": "italie",
             "recipes": [
                 {
                     "id": 200,
@@ -196,7 +196,7 @@
             ]
         },
         {
-            "name": "japanese",
+            "name": "japon",
             "recipes": [
                 {
                     "id": 200,

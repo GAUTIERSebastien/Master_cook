@@ -3,10 +3,12 @@ body {
 
     background: rgba(101, 5, 5, 0.722);
     color: #e96537;
+    text-transform: capitalize;
 
 
 }
 #title{
     text-align: center;
     color: #e96537;
+    text-transform: uppercase;
 }

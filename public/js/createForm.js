@@ -1,7 +1,10 @@
 import { createMarkup } from "../utils/createMarkup.js";
 import { handleFormSubmit } from "./handleFormSubmit.js";
 import { units } from "../utils/unit.js";
+ 
+const addRecipes = document.getElementById("addRecipes");
 
+let country = ["france","italie","amerique","japon","chinois","mexique","thaîlande","inde","espagne","grèce"]
 
 //***FORMULAIRE POUR CRÉER UNE RECETTE***// 
 
@@ -13,22 +16,27 @@ function addIngredientFields(ingredientsDiv, index) {
     const unitSelect = createMarkup('select', '', ingredientsDiv, [{ name: `ingredientUnit${index}`, required: 'true' }]);
     Object.values(units).forEach(unit => {
         createMarkup('option', unit, unitSelect);
+        
     });
 }
 
 export function createForm() {
     // Création du conteneur pour le bouton
-    const buttonContainer = createMarkup('div', '', document.body, [{ class: "button-container" }]);
+    const buttonContainer = createMarkup('div', '',addRecipes, [{ class: "button-container" }]);
 
     // Ajout du bouton "Ajouter une recette" à l'intérieur du conteneur
     const addButton = createMarkup('button', 'Ajouter une recette', buttonContainer, [{ class: "add-recipe btn btn-success" }]);
 
     addButton.addEventListener('click', () => {
         // Création du formulaire d'ajout de recette
-        const form = createMarkup('form', '', document.body, [{ id: "recipe-form" }]);
+        const form = createMarkup('form', '', addRecipes, [{ id: "recipe-form" }]);
         createMarkup('input', '', form, [{ placeholder: 'Titre de la recette', name: 'title', required: 'true' }]);
-        createMarkup('input', '', form, [{ placeholder: 'Pays', name: 'name', required: 'true' }]);
-    
+        const countrySelect = createMarkup('select', '', form, [{  name: 'name', required: 'true' }]);
+        createMarkup('option', "choisi le pays", countrySelect);
+        Object.values(country).forEach(country => {
+            createMarkup('option', country, countrySelect);
+        });
+
         const ingredientsDiv = createMarkup('div', '', form, [{ id: 'ingredients' }]);
         createMarkup('h2', 'Ingredients', ingredientsDiv);
     
@@ -50,6 +58,6 @@ export function createForm() {
         form.addEventListener('submit', handleFormSubmit);
 
         // Insertion du formulaire avant le conteneur du bouton
-        document.body.insertBefore(form, buttonContainer);
+        addRecipes.insertBefore(form, buttonContainer);
     });
 }

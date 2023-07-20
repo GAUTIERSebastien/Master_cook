@@ -25,23 +25,8 @@ fetch('https://localhost:4343/recipes', {
         // console.log(allRecipes); 
         //console.log(allRecipes.recipes.name);
         allRecipes.forEach(recipeGroup => {
-            // console.log(recipe.recipes);
-            //recuperation des recettes par Pays
-            //console.log(recipe);
-
-            if (recipeGroup.name === 'french') {
-                createMarkup('h1', "France", showElement,);
-            }
-            if (recipeGroup.name === 'american') {
-                createMarkup('h1', "Amérique", showElement,);
-            }
-            if (recipeGroup.name === 'japanese') {
-                createMarkup('h1', "Japon", showElement,);
-            }
-            if (recipeGroup.name === 'italian') {
-                createMarkup('h1', "Italie", showElement,);
-            }
-            // createMarkup('h1', recipeGroup.name, showElement,);
+            
+             createMarkup('h1', recipeGroup.name, showElement,);
 
             const country = createMarkup('section', "", showElement, [{ class: "row" }]);
 
