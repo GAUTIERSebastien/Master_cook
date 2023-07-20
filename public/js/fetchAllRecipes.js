@@ -1,7 +1,12 @@
-import { createMarkup } from "../untils/createMarkup.js";
-import { fetchDelete } from "../js/fetchDelete.js"
+import { createMarkup } from "../utils/createMarkup.js";
+import { fetchDelete } from "../js/fetchDelete.js";
+import { createForm } from './createForm.js';
+
 
 const showElement = document.getElementById('showElement');
+
+// Creation du bouton nouvelle recette puis du formulaire
+createForm();
 
 
 fetch('https://localhost:4343/recipes', {
@@ -70,17 +75,11 @@ fetch('https://localhost:4343/recipes', {
                     }
                     else {
                         location.href = "https://localhost:4343/home"
-
                     }
-
-
 
                     location.href = "https://localhost:4343/home"
 
-
                     console.log("supprimer recette ", recette);
-
-
                 });
             })
         })

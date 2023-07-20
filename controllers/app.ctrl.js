@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const { allRecipes } = require('../data/db.json');
+const { addRecipeCtrl } = require('./addRecipe.ctrl.js');
 const fs = require('fs');
 
 exports.homeCtrl = (req, res) => {
@@ -9,6 +10,12 @@ exports.homeCtrl = (req, res) => {
 exports.recipesCtrl = (req, res) => {
   res.json(allRecipes);
 };
+
+
+exports.addRecipeCtrl = (req, res) => {
+  addRecipeCtrl(req, res);
+};
+
 
 exports.deleteCtrl = (req, res) => {
   const id = req.params.id;
@@ -45,7 +52,7 @@ exports.deleteCtrl = (req, res) => {
     console.log('db.json updated successfully');
   });
 
-  // Le reste du code ici
+
 };
 
 

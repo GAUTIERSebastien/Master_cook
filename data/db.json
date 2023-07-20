@@ -282,23 +282,5 @@
                 }
             ]
         }
-    ],
-    "units": [
-        {
-            "UNIT_GRAM": "gram",
-            "UNIT_KILOGRAM": "kilogram",
-            "UNIT_OBJECT": "object",
-            "UNIT_PACK": "bag",
-            "UNIT_SLICE": "slice",
-            "UNIT_MILLILITERS": "millilitre",
-            "UNIT_LITER": "litre",
-            "UNIT_TABLESPOON": "tablespoon",
-            "UNIT_TEASPOON": "teaspoon",
-            "UNIT_CUBE": "cube",
-            "UNIT_POD": "pod",
-            "UNIT_PINCH": "pinch",
-            "UNIT_SHEET": "sheet",
-            "UNIT_PM": "to taste"
-        }
     ]
 }
