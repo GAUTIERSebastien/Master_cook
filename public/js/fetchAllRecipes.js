@@ -47,9 +47,8 @@ fetch('https://localhost:4343/recipes', {
                     // console.log(ingredient.name);
 
 
-                    createMarkup('h3', ingredient.name, cardBody);
-                    createMarkup('span', ingredient.quantity+ " ", cardBody);
-                    createMarkup('span', units[ingredient.unit], cardBody); //à modifier pour avoir les resultat du 2eme tableau
+                    createMarkup('h3', ingredient.name, cardBody,[{ class:"fw-bold"}]);
+                    createMarkup('p', ingredient.quantity+ " "+units[ingredient.unit], cardBody,[{class:"fs-5"}]);
 
 
                 })
