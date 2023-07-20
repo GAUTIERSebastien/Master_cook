@@ -79,7 +79,6 @@ fetch('https://localhost:4343/recipes', {
                 // Passer l'ID de la recette, l'objet recette et le titre de la recette à la fonction handleEditButtonClick
                 btnEdit.addEventListener('click', () => {
                     handleEditButtonClick(recette.id, JSON.stringify(recette.ingredients), recette.title);
-                    console.log("Modifier recette :", recette);
                 });
 
 

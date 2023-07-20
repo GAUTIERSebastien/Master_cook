@@ -248,6 +248,47 @@
                             "unit": "UNIT_SHEET"
                         }
                     ]
+                },
+                {
+                    "id": 400,
+                    "title": "karage",
+                    "ingredients": [
+                        {
+                            "name": "poulet",
+                            "quantity": 1000,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "ail",
+                            "quantity": 2,
+                            "unit": "UNIT_POD"
+                        },
+                        {
+                            "name": "gingembre",
+                            "quantity": 1,
+                            "unit": "UNIT_OBJECT"
+                        },
+                        {
+                            "name": "sauce soja",
+                            "quantity": 300,
+                            "unit": "UNIT_MILLILITERS"
+                        },
+                        {
+                            "name": "vin blanc",
+                            "quantity": 300,
+                            "unit": "UNIT_MILLILITERS"
+                        },
+                        {
+                            "name": "fecule de pomme de terre",
+                            "quantity": 300,
+                            "unit": "UNIT_GRAM"
+                        },
+                        {
+                            "name": "hulle",
+                            "quantity": 3000,
+                            "unit": "UNIT_GRAM"
+                        }
+                    ]
                 }
             ]
         }

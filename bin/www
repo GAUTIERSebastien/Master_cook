@@ -6,6 +6,8 @@ const https = require('https');
 const { ports, ssl: { cert, key } } = require(`../env/env.${process.env.NODE_ENV}`);
 const app = require('../app');
 
+process.setMaxListeners(15); // Par exemple, définissez la limite à 15 ou un nombre supérieur si nécessaire
+
 // Création du serveur HTTP
 http
 

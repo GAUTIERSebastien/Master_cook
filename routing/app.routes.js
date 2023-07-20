@@ -8,13 +8,15 @@ const {
 } = require('../controllers/app.ctrl');
 const {
   updateRecipeCtrl,
-  updateIngredientsCtrl
+  updateIngredientsCtrl,
 } = require('../controllers/recipes.ctrl.js');
 
 router.get('/home', homeCtrl);
 router.get('/recipes', recipesCtrl);
 router.delete('/recipes/delete/:id', deleteCtrl);
+router.post('/recipes/:recipeId', updateRecipeCtrl);
 router.put('/recipes/:recipeId', updateRecipeCtrl);
-router.put('/ingredients/:recipeId', updateIngredientsCtrl);
+router.post('/ingredients/:recipeId', updateIngredientsCtrl);
+router.post('/recipes/update/:recipeId', updateRecipeCtrl);
 
 module.exports = router;

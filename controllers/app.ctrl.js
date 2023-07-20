@@ -2,6 +2,7 @@
 const { resolve } = require('path');
 const { allRecipes } = require('../data/db.json');
 const fs = require('fs');
+const { updateRecipeCtrl } = require('./recipes.ctrl'); // Assurez-vous que cette ligne est présente pour importer la fonction updateRecipeCtrl
 
 exports.homeCtrl = (req, res) => {
   res.sendFile(resolve('public', 'home.html'));
