@@ -16,8 +16,14 @@
 <body>
     <h1 id="title">MASTER<img src="./masterchef.svg" width="40px" alt="">COOK</h1>
 
-    <div id="showElement">
-    </div>
+    <form id="filterForm">
+        <label for="recipeNameInput">Nom de la recette :</label>
+        <input type="text" name="recipeNameInput" id="recipeNameInput" placeholder="Entrez le nom de la recette">
+
+        <button type="submit">Filtrer</button>
+    </form>
+
+    <div id="showElement"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
