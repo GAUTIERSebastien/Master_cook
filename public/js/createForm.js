@@ -47,7 +47,7 @@ export function createForm() {
         }
 
         // Bouton pour ajouter plus d'ingrédients
-        const addIngredientButton = createMarkup('button', 'Ajouter un ingredient', form, [{ type: 'button' }]);
+        const addIngredientButton = createMarkup('button', 'Ajouter un ingredient', form, [{ type: 'button' },{class:"btn btn-success"}]);
         let ingredientCount = 3;
         addIngredientButton.addEventListener('click', () => {
             addIngredientFields(ingredientsDiv, ingredientCount);
@@ -55,7 +55,7 @@ export function createForm() {
         });
 
         // Bouton de soumission du formulaire
-        const submitButton = createMarkup('button', 'Ajouter la recette', form, [{ type: 'submit' }, { class: "btn btn-primary" }]);
+        const submitButton = createMarkup('button', 'envoyer la nouvelle recette', form, [{ type: 'submit' }, { class: "btn btn-primary" }]);
         form.addEventListener('submit', handleFormSubmit);
       
         // Insertion du formulaire avant le conteneur du bouton
