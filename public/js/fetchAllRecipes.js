@@ -20,21 +20,16 @@ fetch('https://localhost:4343/recipes', {
 )
     .then(res => res.json())
     .then(allRecipes => {
-        // console.log(allRecipes); 
-        //console.log(allRecipes.recipes.name);
+
         allRecipes.forEach(recipe => {
-            // console.log(recipe.recipes);
-            //recuperation des recettes par Pays
-            //console.log(recipe);
+
             createMarkup('h1', recipe.name, showElement,);
 
             const country = createMarkup('section', "", showElement, [{ class: "row" }]);
 
             const recettes = recipe.recipes;
             recettes.forEach(recette => {
-                // console.log(recette.ingredients);
-                //recuperation de toutes les recettes (uniquement!)
-                //console.log(recette);
+
                 const titleIng = createMarkup('article', '', country, [{ class: "card col-4 recipeName" }])
 
                 createMarkup('h2', recette.title, titleIng, [{ class: "card-title" }]);
@@ -44,13 +39,10 @@ fetch('https://localhost:4343/recipes', {
 
                 const ingredients = recette.ingredients;
                 ingredients.forEach(ingredient => {
-                    // console.log(ingredient.name);
-
-
+ 
                     createMarkup('h3', ingredient.name, cardBody);
                     createMarkup('span', ingredient.quantity, cardBody);
                     createMarkup('span', ingredient.unit, cardBody); //à modifier pour avoir les resultat du 2eme tableau
-
 
                 })
                 const buttonDiv = createMarkup('div', '', cardBody)
