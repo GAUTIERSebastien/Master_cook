@@ -1,6 +1,6 @@
 import { createMarkup } from "../untils/createMarkup.js";
 import { fetchDelete } from "../js/fetchDelete.js"
-import { fetchUpadate } from "../js/fetchUpdate.js"
+import { fetchUpdate } from "../js/fetchUpdate.js"
 
 const showElement = document.getElementById('showElement');
 
@@ -40,7 +40,20 @@ fetch('https://localhost:4343/recipes', {
             // console.log(recipe.recipes);
             //recuperation des recettes par Pays
             //console.log(recipe);
-            createMarkup('h1', recipe.name, showElement,);
+
+            if(recipe.name === 'french'){
+                createMarkup('h1', "France", showElement,);
+            }
+            if (recipe.name === 'american'){
+                createMarkup('h1', "Amérique", showElement,);
+            }
+            if (recipe.name === 'japanese'){
+                createMarkup('h1', "Japon", showElement,);
+            }
+            if (recipe.name === 'italian'){
+                createMarkup('h1', "Italie", showElement,);
+            }
+
 
             const country = createMarkup('section', "", showElement, [{ class: "row" }]);
 
@@ -51,6 +64,7 @@ fetch('https://localhost:4343/recipes', {
                 //console.log(recette);
                 const titleIng = createMarkup('article', '', country, [{ class: "card col-4 recipeName" }])
 
+                
                 createMarkup('h2', recette.title, titleIng, [{ class: "card-title" }]);
 
 
@@ -62,37 +76,32 @@ fetch('https://localhost:4343/recipes', {
 
 
                     createMarkup('h3', ingredient.name, cardBody);
-                    createMarkup('span', ingredient.quantity , cardBody);
+                    createMarkup('span', ingredient.quantity+" " , cardBody);
                     createMarkup('span', units[ingredient.unit], cardBody); //à modifier pour avoir les resultat du 2eme tableau
 
 
                 })
-                const buttonDiv = createMarkup('div', '', cardBody)
+                const buttonDiv = createMarkup('div', '', cardBody, [{class:'d-flex justify-content-center'}])
 
                 const btnEdit = createMarkup('button', 'Modifier', buttonDiv, [{class: "btn btn-warning"}] );
                 btnEdit.addEventListener('click', () => {
+                    // console.log("Modifier recette dans file fetclAllRecipes : ", recette);
+                    // console.log('Id recupérer au click sur btn Modifié : ', recette.id)
                     
-                    console.log("Modifier recette dans file fetclAllRecipes : ", recette);
-                    console.log('Id recupérer au click sur btn Modifié : ', recette.id)
-                    fetchUpadate(recette.id, recette)
-
+                    fetchUpdate(recette.id, recette);
+                    
                 });
                 const btnDelete = createMarkup('button', 'Supprimer', buttonDiv, [{ class: "reload btn btn-danger" }]);
                 btnDelete.addEventListener('click', () => {
                     console.log(recette.id);
                     if (confirm('Souhaitez-vous confirmer ?')) {
-
                         fetchDelete(recette.id)
                         location.href = "https://localhost:4343/home"
                     }
                     else {
                         location.href = "https://localhost:4343/home"
-
                     }
-
                     location.href = "https://localhost:4343/home"
-
-
                     console.log("supprimer recette ", recette);
 
 

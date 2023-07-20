@@ -1,7 +1,7 @@
 body {
 
 
-    background: rgb(253, 105, 35);
+    background: rgb(107, 162, 244);
     color: rgb(0, 0, 0);
 
 
@@ -9,4 +9,14 @@ body {
 #title{
     text-align: center;
     color: darkred;
+}
+
+.ingredient{
+    border: solid 1px blue;
+    margin: 20px;
+}
+
+.card {
+    background-color: rgb(27, 26, 29);
+    color: #fff;
 }

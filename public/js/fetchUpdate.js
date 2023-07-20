@@ -1,41 +1,42 @@
-import { createMarkup } from "../untils/createMarkup.js";
+//comme à 17h30
 
+import { createMarkup } from "../untils/createMarkup.js";
+import { units } from "../untils/units.js"
 // Attention je n'ai pas gérer si on click plusieur fois sur modif => les modal réapparaissent à la suite 
 
 
-export function fetchUpadate(id, recipe){
-    console.log('ici dans function fetchUpadte: ', id);
-    console.log('la dans function fetchUpadte : ', recipe);
-    console.log('title dans function fetchUpadte : ', recipe.title);
-    console.log('ingredients dans function fetchUpadte :', recipe.ingredients);
+export function fetchUpdate(id, recipe) {
+    // console.log('ici dans function fetchUpadte: ', id);
+    // console.log('la dans function fetchUpadte : ', recipe);
+    // console.log('title dans function fetchUpadte : ', recipe.title);
+    // console.log('ingredients dans function fetchUpadte :', recipe.ingredients);
     const ingredientsForm = recipe.ingredients;
-
+    // console.log(ingredientsForm);
 
 
     let editModal = document.getElementById('modalUpdate');
 
-    
+
     // Create modal with stye bootstrap
-    const divDialog = createMarkup('div', '', editModal, [{ class: 'modal-dialog'}]);
-    const divContent = createMarkup('div', '', divDialog, [{ class:'modal-content'}]);
-    const divHeader = createMarkup('div', '', divContent, [{class:'modal-header'}]);
+    const divDialog = createMarkup('div', '', editModal, [{ class: 'modal-dialog' }]);
+    const divContent = createMarkup('div', '', divDialog, [{ class: 'modal-content' }]);
+    const divHeader = createMarkup('div', '', divContent, [{ class: 'modal-header' }]);
 
 
 
     // Start FormEdit
 
     //Create form modal bootstrap
-    const formEdit = createMarkup('form', '', divHeader, [{class: ''}] );
+    const formEdit = createMarkup('form', '', divHeader, [{ class: '' }]);
 
 
-    // Create "croix" => cancel
-    const btnClose = createMarkup('button', '', divHeader, [{ class: 'btn-close' }, { 'data-bs-dismiss': 'modal' }, { 'aria-label': 'Close' }])
+    // Create "crossClose" => cancel
+    // const btnClose = createMarkup('button', '', formEdit, [{ class: 'btn-close' }, { 'data-bs-dismiss': 'modal' }, { 'aria-label': 'Close' }])
 
-    
+
 
     // Create label + input for recipe.title
-    const labelTilte = createMarkup('label', 'Titre de la Recette', formEdit, [{ for: 'titleRecipe' }, { class: 'form-label' }]);
-    const inputTitle = createMarkup('input', '', formEdit, [{ type: 'text' }, { id: 'titleRecipe' }, { name: 'titleRecipe' }, { value: `${recipe.title}` }, { class: 'form-control' }]);
+    const inputTitle = createMarkup('input', '', formEdit, [{ type: 'text' }, { id: 'titleRecipe' }, { name: 'title' }, { value: `${recipe.title}` }, { class: 'form-control' }]);
 
 
 
@@ -44,76 +45,101 @@ export function fetchUpadate(id, recipe){
     ingredientsForm.forEach(ing => {
 
         //Display name
-        console.log('list ingredients : ', ing.name);
-        cpt ++
-        
+        // console.log('list ingredients : ', ing.name);
+        console.log('list ingredients unité : ', ing);
+        cpt++
 
-        // je n'arrive pas récupérer la valeur lors de la saisie
-        // Method 1 : j'ai déjà essayer avec 1 seul label => je recupère la saisie mais comment l'envoyer ds la fetch ??
+
+        const divIngredient = createMarkup('div', '', formEdit, [{ class: 'ingredient' }]);
 
         //Méthos 2 
         //Name ingredients
-        createMarkup('label', 'Ingrédient N°' + cpt, formEdit, [{ for: 'ingName' }, { class:'form-label'}]);
-        createMarkup('input', '', formEdit, [{ type: 'text' }, { id: 'ingName' }, { name: 'ingName' }, { value: `${ing.name}` }, { class:'form-control'}])
+        createMarkup('label', 'Ingrédient N°' + cpt, divIngredient, [{ for: 'ingName' }, { class: 'form-label' }]);
+        createMarkup('input', '', divIngredient, [{ type: 'text' }, { id: 'ingName' }, { name: 'ingName' }, { value: `${ing.name}` }, { class: 'form-control  name' }])
+
+        //Quantity ingredients
+        createMarkup('input', '', divIngredient, [{ type: 'number' }, { id: 'ingQ' }, { name: 'ingQ' }, { value: `${ing.quantity}` }, { class: 'form-control  quantity' }])
+
+        //Unit Ingredient 
+        const inputUnit = createMarkup('input', '', divIngredient, [{ type: 'text' }, { id: 'ingUnit' }, { name: 'ingUnit' }, { value: `${ing.unit}` }, { class: 'form-control unit' }])
         
-        //Number ingredients
-        createMarkup('label', 'Quantité pour l\'Ingrédient N°' + cpt, formEdit, [{ for: 'ingQ' }, { class: 'form-label' }]);
-        createMarkup('input', '', formEdit, [{ type: 'number' }, { id: 'ingQ' }, { name: 'ingQ' }, { value: `${ing.quantity}` }, { class:'form-control'}])
+
+        //rien qui ne change lors du changement mais le select affiche les units
+        //test select + option
+        const selectEdit = createMarkup('select', '', divIngredient, [{ class: ' ' }])
+        createMarkup('option', ing.unit, selectEdit, [ { name: 'optioningUnit' }, { value: '' }, { class: ' ' }])
+
+        //loop of the units
+        // console.log(units);
+        for (const element in units) {
+            // console.log(`Vous etes ici , ${units[element]}`)
+            createMarkup('option', units[element], selectEdit, [{ value: element }, { class: '' }]);
+        }
         
-        //Unit Ingredient ??? Avoir avec Hamza
-        createMarkup('label', 'l\'Unité pour l\'Ingrédient N°' + cpt, formEdit, [{ for: 'ingUnit' }, { class: 'form-label' }]);
-        createMarkup('input', '', formEdit, [{ type: 'text' }, { id: 'ingUnit' }, { name: 'ingUnit' }, { value: `${ing.unit}` }, { class:'form-control'}])
     });
 
-
     // Create Btn submit "du form "
-    const btnSubmit = createMarkup('button', 'Modifier', formEdit, [{class: 'btn btn-primary'}, {type:'submit'}])
+    const btnSubmit = createMarkup('button', 'Modifier', formEdit, [{ class: 'btn btn-primary' }, { type: 'submit' }])
 
 
-    // Submit le form
-    formEdit.addEventListener('submit', (e) => {
+
+    btnSubmit.addEventListener("click", (e) => {
         e.preventDefault();
+
+        // Collecter les données saisies dans le formulaire
+        const title = inputTitle.value;
+        console.log(title)
+        const ingredients = [];
+
+        const ingredientInputs = document.querySelectorAll(".ingredient");
         
-        //Je récupère la modif de la saisie du titleform => ok
-        //Méthod 2
-        console.log(formEdit.titleRecipe.value);
-        console.log(formEdit.ingName.value);
-        console.log(formEdit.ingQ.value);
-        console.log(formEdit.ingUnit.value);
+        ingredientInputs.forEach((input) => {
+            const name = input.querySelector(".name").value;
+            console.log('118', name)
+            const quantity = input.querySelector(".quantity").value;
+            const unit = input.querySelector(".unit").value;
+            ingredients.push({ name, quantity, unit });
+            console.log('122', ingredients)
+        });
+        console.log(ingredients);
 
-        // Voir plus haut Method 1
-        // console.log(formEdit.ingName); //=> recupère tous les ingrédients mais à voir comment je peux dispacher chaque element
-        // const formIngrs = formEdit.ingName;
-        // formIngrs.forEach(element => {
-        //     console.log('element: ', element.value);
-        // });
-    })
+        const updatedRecipe = { title, ingredients };
+        console.log(updatedRecipe);
 
+        update(updatedRecipe, id);
+    });
 
 
     // "Lancement bootstrapModal => formedit"
     editModal = new bootstrap.Modal(document.getElementById('modalUpdate'), {});
-    editModal.show(); // => Modal l'affiche
+    editModal.show(); 
 
-        
-    
-    // START FETCH PUT
+
+
+    // START FETCH PATCH
     // console.log("Start fetchUpadte");
 
+    async function update(updatedRecipe, id) {
+        console.log(updatedRecipe);
+        console.log(id);
+        try {
+            fetch(`https://localhost:4343/recipes/update/${id}`, {
 
-    // SOUCIS AU NIVEAU DE LA ROUTE EROR 404 DS CONSOLE
-    // fetch(`https://localhost:4343/recipes/update/${id}`, {
+                method: "PATCH",
+                headers:
+                {
+                    "content-type": "application/json",
 
-    //     method: "PUT",
-    //     // headers:
-    //     // {
-    //     //     "content-type": "application/json",
+                },
+                body: JSON.stringify(updatedRecipe)
+            })
+        } catch (error) {
+            console.log(error)
+            console.log(body);
+        }
 
-    //     // },
-    //     body: {
-    //         "title": formEdit.titleRecipe.value,
-    //     }
-    // })
-    //     .then(res => res.json())
+    }
+
+
 
 }
