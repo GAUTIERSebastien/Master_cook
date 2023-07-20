@@ -191,38 +191,7 @@ fetch('https://localhost:4343/recipes', {
    
     })
 
-    // Ajoute cette fonction pour extraire tous les ingrédients uniques de toutes les recettes
-function extractUniqueIngredients(allRecipes) {
-    const uniqueIngredients = new Set();
-  
-    allRecipes.forEach(recipeGroup => {
-      recipeGroup.recipes.forEach(recipe => {
-        recipe.ingredients.forEach(ingredient => {
-          uniqueIngredients.add(ingredient.name.toLowerCase());
-        });
-      });
-    });
-  
-    return Array.from(uniqueIngredients);
-  }
-  
-  // Ajoute cette fonction pour mettre à jour dynamiquement les options du champ de sélection avec les ingrédients
-  function updateIngredientFilterOptions(allRecipes) {
-    const ingredientFilter = document.getElementById('ingredientFilter');
-    const uniqueIngredients = extractUniqueIngredients(allRecipes);
-  
-    ingredientFilter.innerHTML = '<option value="">Tous les ingrédients</option>';
-    uniqueIngredients.forEach(ingredient => {
-      const option = document.createElement('option');
-      option.value = ingredient;
-      option.textContent = ingredient;
-      ingredientFilter.appendChild(option);
-    });
-  }
-  
-  // Au début du bloc .then() dans fetchAllRecipes.js, appelle la fonction pour mettre à jour les options du champ de sélection
- 
-    // ...
+
   
 
 })   
