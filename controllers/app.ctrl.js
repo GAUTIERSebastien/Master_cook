@@ -48,8 +48,8 @@ exports.deleteCtrl = (req, res) => {
 
 exports.updateCtrl = (req, res)=>{
   const id = req.params.id;
-console.log(id);
-
+  const reqBody = req
+  console.log(req.body)
 }
 
 

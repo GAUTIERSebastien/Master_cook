@@ -1,6 +1,6 @@
 import { createMarkup } from "../untils/createMarkup.js";
 import { fetchDelete } from "../js/fetchDelete.js"
-import { fetchUpadate } from "../js/fetchUpdate.js"
+import { fetchUpdate } from "../js/fetchUpdate.js"
 
 const showElement = document.getElementById('showElement');
 
@@ -74,7 +74,9 @@ fetch('https://localhost:4343/recipes', {
                     
                     console.log("Modifier recette dans file fetclAllRecipes : ", recette);
                     console.log('Id recupérer au click sur btn Modifié : ', recette.id)
-                    fetchUpadate(recette.id, recette)
+                    
+                    fetchUpdate(recette.id, recette)
+                    
 
                 });
                 const btnDelete = createMarkup('button', 'Supprimer', buttonDiv, [{ class: "reload btn btn-danger" }]);

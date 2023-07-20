@@ -11,6 +11,9 @@ const {
 router.get('/home', homeCtrl);
 router.get('/recipes', recipesCtrl );
 router.delete('/recipes/delete/:id', deleteCtrl);
-router.put('recipes/update/:id', updateCtrl)
+
+router.patch('/recipes/update/:id', (req, res) => {
+    console.log(req.body)
+});
 
 module.exports = router;
