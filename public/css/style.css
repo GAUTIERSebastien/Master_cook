@@ -1,12 +1,12 @@
 body {
 
 
-    background: rgb(253, 105, 35);
-    color: rgb(0, 0, 0);
+    background: rgba(101, 5, 5, 0.722);
+    color: #e96537;
 
 
 }
 #title{
     text-align: center;
-    color: darkred;
+    color: #e96537;
 }
