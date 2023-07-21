@@ -10,3 +10,17 @@ body {
     text-align: center;
     color: #e96537;
 }
+
+.recipe {
+    background-color: #fff;
+    height: auto;
+    max-width: 500px;
+    padding: 50px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+
+.card {
+    width: 300px;
+}

@@ -69,7 +69,7 @@ fetch('https://localhost:4343/recipes', {
 
 
                 })
-                const buttonDiv = createMarkup('div', '', cardBody)
+                const buttonDiv = createMarkup('div', '', cardBody, [{ class: 'd-flex justify-content-center' }])
 
                 const btnEdit = createMarkup('button', 'Modifier', buttonDiv, [{ class: "btn btn-warning" }]);
                 btnEdit.addEventListener('click', () => {
@@ -92,7 +92,6 @@ fetch('https://localhost:4343/recipes', {
                         location.href = "https://localhost:4343/home"
                     }
 
-                    location.href = "https://localhost:4343/home"
 
                     console.log("supprimer recipe ", recipe);
                 });

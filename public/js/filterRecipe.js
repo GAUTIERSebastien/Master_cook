@@ -32,8 +32,18 @@ export function createFilteredRecipeElements(filteredRecipes) {
     showElement.innerHTML = '';
 
     filteredRecipes.forEach(recipeGroup => {
-        createMarkup('h2', recipeGroup.name, showElement);
-
+        if (recipeGroup.name === "american") {
+            createMarkup('h2', "Américain", showElement);
+        }
+        if (recipeGroup.name === "japanese") {
+            createMarkup('h2', "Japonais", showElement);
+        }
+        if (recipeGroup.name === "italian") {
+            createMarkup('h2', "Italien", showElement);
+        }
+        if (recipeGroup.name === "french") {
+            createMarkup('h2', "Français", showElement);
+        }
         const groupElement = createMarkup('div', '', showElement);
         const recipes = recipeGroup.recipes;
 
