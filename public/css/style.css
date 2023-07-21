@@ -1,14 +1,17 @@
 body {
 
 
-    background: rgba(101, 5, 5, 0.722);
+    background-image: url(./istockphoto-636823058-612x612.jpg);
+    background-size:auto;
     color: #e96537;
+    text-transform: capitalize;
 
 
 }
 #title{
     text-align: center;
     color: #e96537;
+
 }
 
 .recipe {
