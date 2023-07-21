@@ -1,56 +1,36 @@
 import { createMarkup } from "../utils/createMarkup.js";
 import { units } from "../utils/unit.js"
-// Attention je n'ai pas gérer si on click plusieur fois sur modif => les modal réapparaissent à la suite 
-
 
 export function fetchUpdate(id, recipe) {
-    // console.log('ici dans function fetchUpadte: ', id);
-    // console.log('la dans function fetchUpadte : ', recipe);
-    // console.log('title dans function fetchUpadte : ', recipe.title);
-    // console.log('ingredients dans function fetchUpadte :', recipe.ingredients);
+
     const ingredientsForm = recipe.ingredients;
-    // console.log(ingredientsForm);
 
+    const editModal = document.getElementById('modalUpdate');
 
-    let editModal = document.getElementById('modalUpdate');
-
-
-    // Create modal with stye bootstrap
+    // Create modal with style bootstrap
     const divDialog = createMarkup('div', '', editModal, [{ class: 'modal-dialog' }]);
     const divContent = createMarkup('div', '', divDialog, [{ class: 'modal-content' }]);
     const divHeader = createMarkup('div', '', divContent, [{ class: 'modal-header' }]);
 
 
-
-    // Start FormEdit
+    //** START FORM_EDIT **/ 
 
     //Create form modal bootstrap
     const formEdit = createMarkup('form', '', divHeader, [{ class: '' }]);
 
-
-    // Create "crossClose" => cancel
-    // const btnClose = createMarkup('button', '', formEdit, [{ class: 'btn-close' }, { 'data-bs-dismiss': 'modal' }, { 'aria-label': 'Close' }])
-
-
-
     // Create label + input for recipe.title
     const inputTitle = createMarkup('input', '', formEdit, [{ type: 'text' }, { id: 'titleRecipe' }, { name: 'title' }, { value: `${recipe.title}` }, { class: 'form-control' }]);
-
-
 
     //Start label + input Ingredients with 'compteur'
     let cpt = 0;
     ingredientsForm.forEach(ing => {
 
         //Display name
-        // console.log('list ingredients : ', ing.name);
         console.log('list ingredients unité : ', ing);
         cpt++
 
-
         const divIngredient = createMarkup('div', '', formEdit, [{ class: 'ingredient' }]);
 
-        //Méthos 2 
         //Name ingredients
         createMarkup('label', 'Ingrédient N°' + cpt, divIngredient, [{ for: 'ingName' }, { class: 'form-label' }]);
         createMarkup('input', '', divIngredient, [{ type: 'text' }, { id: 'ingName' }, { name: 'ingName' }, { value: `${ing.name}` }, { class: 'form-control  name' }])
@@ -61,25 +41,19 @@ export function fetchUpdate(id, recipe) {
         //Unit Ingredient 
         const inputUnit = createMarkup('input', '', divIngredient, [{ type: 'text' }, { id: 'ingUnit' }, { name: 'ingUnit' }, { value: `${ing.unit}` }, { class: 'form-control unit' }])
 
-
         //rien qui ne change lors du changement mais le select affiche les units
         //test select + option
         const selectEdit = createMarkup('select', '', divIngredient, [{ class: ' ' }])
         createMarkup('option', ing.unit, selectEdit, [{ name: 'optioningUnit' }, { value: '' }, { class: ' ' }])
 
         //loop of the units
-        // console.log(units);
         for (const element in units) {
-            // console.log(`Vous etes ici , ${units[element]}`)
             createMarkup('option', units[element], selectEdit, [{ value: element }, { class: '' }]);
         }
-
     });
 
     // Create Btn submit "du form "
     const btnSubmit = createMarkup('button', 'Modifier', formEdit, [{ class: 'btn btn-primary' }, { type: 'submit' }])
-
-
 
     btnSubmit.addEventListener("click", (e) => {
         e.preventDefault();
@@ -107,15 +81,12 @@ export function fetchUpdate(id, recipe) {
         update(updatedRecipe, id);
     });
 
-
     // "Lancement bootstrapModal => formedit"
     editModal = new bootstrap.Modal(document.getElementById('modalUpdate'), {});
     editModal.show();
 
 
-
-    // START FETCH PATCH
-    // console.log("Start fetchUpadte");
+    //** START FETCH PATCH **/ 
 
     async function update(updatedRecipe, id) {
         console.log(updatedRecipe);
@@ -135,6 +106,5 @@ export function fetchUpdate(id, recipe) {
             console.log(error)
             console.log(body);
         }
-
     }
 }

@@ -16,7 +16,6 @@ exports.addRecipeCtrl = (req, res) => {
   addRecipeCtrl(req, res);
 };
 
-
 exports.deleteCtrl = (req, res) => {
   const id = req.params.id;
   let isIdExists = false;
@@ -51,24 +50,22 @@ exports.deleteCtrl = (req, res) => {
     }
     console.log('db.json updated successfully');
   });
-
-
 };
 
 exports.updateCtrl = (req, res) => {
+  
   const id = req.params.id;
   console.log(id);
+
   const reqBody = req.body;
   console.log(reqBody);
-  // console.log(req.params);
-  // console.log(req);
 
   const recipe = req.body;
+
   const title = recipe.title;
-
   console.log(title);
-  const ingredients = recipe.ingredients;
 
+  const ingredients = recipe.ingredients;
   console.log(ingredients);
 
   res.json(req.body);

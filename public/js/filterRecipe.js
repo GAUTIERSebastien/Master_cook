@@ -1,5 +1,6 @@
 import { createMarkup } from "../utils/createMarkup.js";
 import { units } from "../utils/unit.js"
+
 // Fonction pour filtrer les recettes par nom
 
 export function filterRecipes(allRecipes, recipeName) {
@@ -15,7 +16,6 @@ export function filterRecipes(allRecipes, recipeName) {
             // verifie si le titre de la recette correspond à la recherche (ignore la casse)
             if (recipe.title.toLowerCase().includes(recipeName)) {
                 filteredGroup.recipes.push(recipe);
-
             }
         });
 
@@ -23,7 +23,6 @@ export function filterRecipes(allRecipes, recipeName) {
             filteredRecipes.push(filteredGroup);
         }
     });
-
     return filteredRecipes;
 }
 
@@ -60,7 +59,6 @@ export function createFilteredRecipeElements(filteredRecipes) {
 
                     createMarkup('li', `${ingredient.name} - ${ingredient.quantity} ${units[ingredient.unit]}`, ulElement);
                 }
-
             });
         });
     });

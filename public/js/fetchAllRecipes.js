@@ -11,20 +11,17 @@ const showElement = document.getElementById('showElement');
 // Creation du bouton nouvelle recette puis du formulaire
 createForm();
 
-
 fetch('https://localhost:4343/recipes', {
     method: "GET",
     headers:
     {
         "content-type": "application/json",
-
     },
 }
 )
     .then(res => res.json())
     .then(allRecipes => {
-        // console.log(allRecipes); 
-        //console.log(allRecipes.recipes.name);
+
         allRecipes.forEach(recipeGroup => {
             
              createMarkup('h1', recipeGroup.name, showElement,);
@@ -33,9 +30,7 @@ fetch('https://localhost:4343/recipes', {
 
             const recipes = recipeGroup.recipes;
             recipes.forEach(recipe => {
-                // console.log(recette.ingredients);
-                //recuperation de toutes les recettes (uniquement!)
-                //console.log(recette);
+
                 const titleIng = createMarkup('article', '', country, [{ class: "card col-4 recipeName" }])
 
                 createMarkup('h2', recipe.title, titleIng, [{ class: "card-title" }]);
@@ -45,28 +40,22 @@ fetch('https://localhost:4343/recipes', {
 
                 const ingredients = recipe.ingredients;
                 ingredients.forEach(ingredient => {
-                    // console.log(ingredient.name);
-
-
+                  
                     createMarkup('h3', ingredient.name, cardBody,[{ class:"fw-bold"}]);
                     createMarkup('p', ingredient.quantity+ " "+units[ingredient.unit], cardBody,[{class:"fs-5"}]);
-
 
                 })
                 const buttonDiv = createMarkup('div', '', cardBody, [{ class: 'd-flex justify-content-center' }])
 
                 const btnEdit = createMarkup('button', 'Modifier', buttonDiv, [{ class: "btn btn-warning" }]);
                 btnEdit.addEventListener('click', () => {
-                    // console.log("Modifier recette dans file fetclAllRecipes : ", recette);
-                    // console.log('Id recupérer au click sur btn Modifié : ', recette.id)
 
                     fetchUpdate(recipe.id, recipe);
-
                 });
                 
                 const btnDelete = createMarkup('button', 'Supprimer', buttonDiv, [{ class: "reload btn btn-danger" }]);
                 btnDelete.addEventListener('click', () => {
-                    console.log(recipe.id);
+
                     if (confirm('Souhaitez-vous confirmer ?')) {
 
                         fetchDelete(recipe.id)
@@ -76,7 +65,6 @@ fetch('https://localhost:4343/recipes', {
                         location.href = "https://localhost:4343/home"
                     }
 
-
                     console.log("supprimer recipe ", recipe);
                 });
             })
@@ -84,7 +72,6 @@ fetch('https://localhost:4343/recipes', {
         // Gestionnaire d'événements pour le formulaire de filtrage
         document.getElementById('filterForm').addEventListener('submit', event => {
             event.preventDefault();
-
 
             const recipeNameInput = document.getElementById('recipeNameInput');
             const recipeName = recipeNameInput.value.toLowerCase();
@@ -94,9 +81,6 @@ fetch('https://localhost:4343/recipes', {
 
             // Générer les éléments HTML de la recette filtrée
             createFilteredRecipeElements(resultFilter)
-
-
-
         })
     });
 

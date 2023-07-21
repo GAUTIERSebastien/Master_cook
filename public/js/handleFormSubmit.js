@@ -26,7 +26,6 @@ export function handleFormSubmit(event) {
             quantity: parseFloat(ingredientQuantity), // Conversion de la quantité en nombre
             unit: ingredientUnit
         });
-
         index++;
     }
 
@@ -37,7 +36,7 @@ export function handleFormSubmit(event) {
         name: name,
         ingredients: ingredients,
     };
-
+    
     console.log(recipe); // Affichage de l'objet de recette dans la console
 
     // Envoi de la recette à l'API

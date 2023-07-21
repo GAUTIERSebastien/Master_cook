@@ -1,17 +1,13 @@
 body {
-
-
     background-image: url(./istockphoto-636823058-612x612.jpg);
     background-size:auto;
     color: #e96537;
     text-transform: capitalize;
-
-
 }
+
 #title{
     text-align: center;
     color: #e96537;
-
 }
 
 .recipe {
@@ -22,7 +18,6 @@ body {
     border-radius: 10px;
     margin-bottom: 25px;
 }
-
 
 .card {
     width: 300px;

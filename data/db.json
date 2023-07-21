@@ -5,7 +5,7 @@
             "recipes": [
                 {
                     "id": 100,
-                    "title": "creme anglaise",
+                    "title": "crème anglaise",
                     "ingredients": [
                         {
                             "name": "lait",
@@ -31,7 +31,7 @@
                 },
                 {
                     "id": 101,
-                    "title": "creme patisiere",
+                    "title": "crème pâtissière",
                     "ingredients": [
                         {
                             "name": "lait",
@@ -88,7 +88,7 @@
                 },
                 {
                     "id": 104,
-                    "title": "creme brulée",
+                    "title": "crème brulée",
                     "ingredients": [
                         {
                             "name": "lait",
@@ -115,7 +115,7 @@
             ]
         },
         {
-            "name": "amerique",
+            "name": "amérique",
             "recipes": [
                 {
                     "id": 300,
@@ -182,7 +182,7 @@
                             "unit": "UNIT_GRAM"
                         },
                         {
-                            "name": "gelatine",
+                            "name": "gélatine",
                             "quantity": 27,
                             "unit": "UNIT_GRAM"
                         },
@@ -259,7 +259,7 @@
                             "unit": "UNIT_GRAM"
                         },
                         {
-                            "name": "œuf",
+                            "name": "oeuf",
                             "quantity": 2,
                             "unit": "UNIT_OBJECT"
                         },

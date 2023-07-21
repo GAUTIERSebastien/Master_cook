@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { allRecipes } = require('../data/db.json');
-const { v4: uuidv4 } = require('uuid'); // Importez le module uuid pour générer des ID uniques
+const { v4: uuidv4 } = require('uuid'); // Importe le module uuid pour générer des ID uniques
 
 exports.addRecipeCtrl = (req, res) => {
     const recipe = req.body;
@@ -8,10 +8,10 @@ exports.addRecipeCtrl = (req, res) => {
     const name = recipe.name;
     let found = false;
 
-    // Générez un ID unique pour la recette
+    // Génère un ID unique pour la recette
     recipe.id = uuidv4(); 
 
-    // Chargez db.json chaque fois que vous devez l'utiliser
+    // Charge db.json chaque fois que vous devez l'utiliser
     const db = JSON.parse(fs.readFileSync('data/db.json', 'utf8'));
     const allRecipes = db.allRecipes;
 
@@ -23,7 +23,7 @@ exports.addRecipeCtrl = (req, res) => {
         }        
     }
    
-    // Si la gastronomie n'existe pas, créez-en une nouvelle
+    // Si la gastronomie n'existe pas, en créer une nouvelle
     if (!found) {
         allRecipes.push({
             name: name,
