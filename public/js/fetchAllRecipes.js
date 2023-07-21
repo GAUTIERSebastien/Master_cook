@@ -1,5 +1,6 @@
 import { createMarkup } from "../utils/createMarkup.js";
 import { fetchDelete } from "../js/fetchDelete.js";
+import { fetchUpdate } from "../js/fetchUpdate.js";
 import { createForm } from './createForm.js';
 import { createFilteredRecipeElements } from "../js/filterRecipe.js"
 import { filterRecipes } from "../js/filterRecipe.js"
@@ -52,18 +53,17 @@ fetch('https://localhost:4343/recipes', {
 
 
                 })
-                const buttonDiv = createMarkup('div', '', cardBody)
+                const buttonDiv = createMarkup('div', '', cardBody, [{ class: 'd-flex justify-content-center' }])
 
-                const btnEdit = createMarkup('button', 'Modifier', buttonDiv, [
-                    { class: 'edit-recipe btn btn-warning' },
-                    { 'data-id': recipe.id },
-                    { 'data-ingredients': JSON.stringify(recipe.ingredients) }
-                ]);
+                const btnEdit = createMarkup('button', 'Modifier', buttonDiv, [{ class: "btn btn-warning" }]);
                 btnEdit.addEventListener('click', () => {
-                    handleEditButtonClick(recipe.id, JSON.stringify(recipe.ingredients));
-                    console.log("Modifier recipe :", recipe);
+                    // console.log("Modifier recette dans file fetclAllRecipes : ", recette);
+                    // console.log('Id recupérer au click sur btn Modifié : ', recette.id)
+
+                    fetchUpdate(recipe.id, recipe);
 
                 });
+                
                 const btnDelete = createMarkup('button', 'Supprimer', buttonDiv, [{ class: "reload btn btn-danger" }]);
                 btnDelete.addEventListener('click', () => {
                     console.log(recipe.id);
@@ -76,7 +76,6 @@ fetch('https://localhost:4343/recipes', {
                         location.href = "https://localhost:4343/home"
                     }
 
-                    location.href = "https://localhost:4343/home"
 
                     console.log("supprimer recipe ", recipe);
                 });

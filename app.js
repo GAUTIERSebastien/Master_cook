@@ -5,6 +5,7 @@ const app = express();
 const router = require('./routing');
 
 // CONFIGURATION DE L'APP
+// Quel endroit le front, on peut faire un folder ex: front
 app.use(express.static(resolve('public')));
 app.use(express.json());
 app.use(router);

@@ -13,7 +13,23 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body>
+
+<body class="container">
+    <h1 id="title">MASTER<img src="./masterchef.svg" width="40px" alt="">COOK</h1>
+
+    <div class="modal" tabindex="-1" id="modalUpdate"></div>
+
+    <form id="filterForm" class="m-4">
+        <label for="recipeNameInput">Nom de la recette :</label>
+        <input type="text" name="recipeNameInput" id="recipeNameInput" placeholder="Entrez le nom de la recette">
+
+        <button type="submit" class="btn btn-success">Filtrer</button>
+    </form>
+
+    <div id="showElement"></div>
+
+
+<!-- <body>
     <main class="container-fluid">
         <h1 id="title" class="align-middle">MASTER<img src="./masterchef.svg" width="40px" alt="">COOK</h1>
         <div class="row">
@@ -29,7 +45,8 @@
             </form>
         </div>
         <div id="showElement"></div>
-    </main>
+    </main> -->
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
         crossorigin="anonymous"></script>
