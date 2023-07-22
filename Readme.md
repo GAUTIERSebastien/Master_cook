@@ -6,7 +6,7 @@ En vous aidant des [Consignes](Consignes.md), réaliser une application web de g
 Une fois le travail réalisé, effectuer un fork de ce projet et remplir le README avec votre groupe, et un lien vers le repository github de votre projet.
 
 
-## Initailiser le projet
+## Initialiser le projet
 
 ```bash
 npm init -y && npm i express && npm i -D nodemon && npx gentls && npm i cross-env  && npm i uuid && npm i body-parser
