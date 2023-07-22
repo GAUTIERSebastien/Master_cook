@@ -27,7 +27,7 @@ Ne jamais travailler sur main/master
 ### Changer de branche
 
 ```bash
-git checkout
+git checkout nomDeLaBranche
 ```
 
 ### Créer et changer de branche 
